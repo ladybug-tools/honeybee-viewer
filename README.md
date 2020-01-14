@@ -8,7 +8,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 # Honeybee Viewer Read Me
 
 
-## Sample File Viewer 3D
+## Honeybee Schema Viewer 3D
 
 View data in 3D with the Three.js renderer
 
@@ -16,7 +16,7 @@ View data in 3D with the Three.js renderer
 
 
 
-## Sample File Viewer
+## Honeybee Schema Viewer
 
 View Honeybee JSON as a text only tree view
 
@@ -29,9 +29,9 @@ For links and change log, see [Sample File Viewer Read Me ]( #honeybee-schema-vi
 
 Demos of the script used to create the tree views. Both files can use fixes.
 
-### https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/json-tree-view-repos.html
+### https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/v-2020-01-10/json-tree-view-repos.html
 
-### https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/json-tree-view-files.html
+### https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/v-2020-01-10/json-tree-view-files.html
 
 
 

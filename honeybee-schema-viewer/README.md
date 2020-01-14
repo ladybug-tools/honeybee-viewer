@@ -5,16 +5,16 @@ value="You are now in a GitHub web page view - Click this button to view this re
 
 <br>
 
-# Honeybee Model Sample File Viewer Read Me
+# Honeybee Schema Viewer Read Me
 
 
-### Preferred or 'canonical' link: https://www.ladybug.tools/spider/sandbox/honeybee-model/sample-file-viewer/
+### Preferred or 'canonical' link: https://www.ladybug.tools/honeybee-viewer/honeybee-schema-viewer/
 
 ## Concept
 
 View Honeybee Model-Schema sample JSON files using a text-only tree view file browser and viewer
 
-For more details see the [read me]( https://www.ladybug.tools/spider/#sandbox/honeybee-model/README.md ) in the folder above
+For more details see the [read me]( https://www.ladybug.tools/honeybee-viewer/#honeybee-schema-viewer/README.md ) in the folder above
 
 ### Features
 
