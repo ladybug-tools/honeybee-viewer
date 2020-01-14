@@ -12,7 +12,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 
 View data in 3D with the Three.js renderer
 
-### Preferred or 'canonical' link: https://www.ladybug.tools/honeybee-viewer/sample-file-viewer-3d/
+### Preferred or 'canonical' link: https://www.ladybug.tools/honeybee-viewer/honeybee-schema-viewer-3d/
 
 
 
@@ -20,10 +20,10 @@ View data in 3D with the Three.js renderer
 
 View Honeybee JSON as a text only tree view
 
-### Preferred or 'canonical' link: https://www.ladybug.tools/honeybee-viewer/sample-file-viewer/
+### Preferred or 'canonical' link: https://www.ladybug.tools/honeybee-viewer/honeybee-schema-viewer/
 
 
-For links and change log, see [Sample File Viewer Read Me ]( #sandbox/honeybee-model/sample-file-viewer/README.md)
+For links and change log, see [Sample File Viewer Read Me ]( #honeybee-schema-viewer/README.md)
 
 ## JSON tree viewer
 
