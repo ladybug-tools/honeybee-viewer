@@ -64,6 +64,8 @@ JTV.getMenu = function () {
 JTV.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '', key, item, index );
 	const type = typeof item;
 
+	if ( type === "null" ) { console.log( 'null item', item ); };
+
 	if ( [ "string", "number", "boolean", "null", "bigint" ].includes( type ) || !item ) {
 
 		return JTV.getString( key, item, index );
@@ -83,6 +85,8 @@ JTV.getString = function ( key, item, index ) { //console.log( 'string', key, it
 	// https://stackoverflow.com/questions/8299742/is-there-a-way-to-convert-html-into-normal-text-without-actually-write-it-to-a-s
 	//if ( typeof item === "string" ) { item = item.replace( /<[^>]*>/g, '' ); }
 	//if ( typeof item === "number" ) { item = item.toLocaleString() };
+
+	//if ( typeof item === "null" ) { console.log( 'null item', item ); };
 
 	return `<div>${ key }: <span style=color:blue >${ item }<span></div>`;
 
@@ -104,7 +108,7 @@ JTV.getArray = function ( key, array, index ) { //console.log( 'Array', key, arr
 
 JTV.getObject = function ( key, item, index ) {
 
-	//if ( !item ) { console.log( 'error:', key, item, index ); return; }
+	if ( !item ) { console.log( 'error:', key, item, index ); return; }
 
 	const keys = Object.keys( item );
 	const htm = keys.map( key => JTV.parseJson( key, item[ key ] ) ).join( "" );

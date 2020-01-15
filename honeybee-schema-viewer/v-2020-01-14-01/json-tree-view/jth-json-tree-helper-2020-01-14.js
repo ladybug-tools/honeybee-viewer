@@ -26,10 +26,10 @@ JTH.getMenu = function() {
 
 
 		<p id=JTHpButtons >
-			<button id=but onclick=JTV.toggleAll(); >close all</button>
-			<button id=but onclick=JTV.toggleAll(true); >open all</button>
-			<button id=but onclick=JTV.addUrls(); >clickable links</button>
-			<button onclick=JTH.addPopupHelp() title="not useful yet, just adds a title witg is" >add popup help</button>
+			<button id=but onclick=JTH.toggleAll(); >close all</button>
+			<button id=but onclick=JTH.toggleAll(true); >open all</button>
+			<button id=but onclick=JTH.addUrls(); >clickable links</button>
+			<button onclick=JTH.addPopupHelp() title="not useful yet, just adds a title with id" >add popup help</button>
 		</p>
 
 	</details>
@@ -84,6 +84,22 @@ JTH.addPopupHelp = function () {
 	//htm = `<button onclick=console.log(this.value); value=23 >faces</button>`;
 
 	//JTVdivJsonTree.innerHTML = JTVdivJsonTree.innerHTML.replace( /xxxx/g, htm );
+};
+
+
+
+JTH.toggleAll = function ( boole = false ) {
+
+	JTVdivJsonTree.querySelectorAll( "details" ).forEach( detail => detail.open = boole );
+
+};
+
+
+JTH.addUrls = function () {
+
+	JTVdivJsonTree.innerHTML = JTVdivJsonTree.innerHTML.replace(
+		/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a> ' );
+
 };
 
 

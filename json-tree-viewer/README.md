@@ -1,24 +1,25 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://jaanga.github.io/#cookbook-html/examples/0-templates/README.md "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/#README.md "View file as a web page." ) </span>
 
-<div><input type=button onclick="window.location.href='https://github.com/pushme-pullyou/pushme-pullyou.github.io/blob/master/tootoo-templates/README.md'";
+<div><input type=button onclick="window.location.href='https://github.com/ladybug.tools/honeybee-viewer/blob/master/json-tree-viewer'";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
 
-# [JSON tree view Read Me]( #README.md )
+# [JSON Tree Viewer Read Me]( #README.md )
 
 <!--
 <iframe src=https://jaanga.github.io/tootoo-templates/basic-html.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
-
-## Full Screen: []( .html )
 -->
+
+## Full Screen: [ JSON Tree Viewer ]( ./v-2020-01-14/json-tree-view.html )
 
 
 ## Concept
 
+View JSON files a tree view
 
+* Very simple code
+* HTML5 only
+* No CSS needed
 
-[v-2020-01-06/json-view-xhr.html]( v-2020-01-06/json-view-xhr.html )
-
-[v-2020-01-07/json-view-xhr-theo-2020-01-07.html]( v-2020-01-07/json-view-xhr-theo-2020-01-07.html )
 
 ## Links of Interest
 
@@ -45,6 +46,12 @@ replace url
 * https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
 
 ## Change Log
+
+### 2020-01-14 ~ Theo
+
+JSON Tree Viewer
+
+* R: Like all of it
 
 
 ### 2020-01-06

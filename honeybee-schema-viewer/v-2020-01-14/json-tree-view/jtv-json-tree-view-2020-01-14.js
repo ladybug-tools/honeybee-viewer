@@ -117,4 +117,20 @@ JTV.getObject = function ( key, item, index ) {
 
 
 
+JTV.toggleAll = function ( boole = false ) {
+
+	JTVdivJsonTree.querySelectorAll( "details" ).forEach( detail => detail.open = boole );
+
+};
+
+
+JTV.addUrls = function () {
+
+	JTVdivJsonTree.innerHTML = JTVdivJsonTree.innerHTML.replace(
+		/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a> ' );
+
+};
+
+
+
 JTV.init();

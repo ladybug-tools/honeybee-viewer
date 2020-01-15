@@ -45,7 +45,7 @@ JTH.onLoad = function () {
 
 	const details = Array.from( JTVdivJsonTree.querySelectorAll( "details" ) ).filter( det => det.children.length < 10 );
 
-	//console.log( 'details', details );
+	console.log( 'details', details );
 	//details[ 0 ].open = true;
 
 };
