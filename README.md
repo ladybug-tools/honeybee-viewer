@@ -30,7 +30,7 @@ Demos of the script used to create the tree views. Both files can use fixes.
 
 ### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/
 
-### [JSON Tree Viewer Read me]( https://www.ladybug.tools/honeybee-viewer/index.html#json-tree-viewer/README.md )
+### [JSON Tree Viewer Read me]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/readme.html )
 
 
 
