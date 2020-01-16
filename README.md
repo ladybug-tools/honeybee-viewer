@@ -26,7 +26,7 @@ View Honeybee JSON as a text only tree view
 
 ## JSON Tree Viewer
 
-Demos of the script used to create the tree views. Both files can use fixes.
+Demos of the script used to create the tree views.
 
 ### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/
 
