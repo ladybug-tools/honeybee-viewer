@@ -34,7 +34,7 @@ GFH.getMenu = function() {
 			More details available in JavaScript developer console.
 		</p>
 
-		<select id=GFHselFiles onchange=GFH.getUrl(this.value) size=10 style=overflow:auto;width:100% ></select>
+		<select id=GFHselFiles onchange=GFH.getUrl(this.value) size=18 style=overflow:auto;width:100% ></select>
 
 		<div id=GFHdivOnLoad ></div>
 

@@ -3,9 +3,9 @@ const JTE = {}
 
 JTE.init = function () {
 
-	JTHpButtons.innerHTML += JTE.getMenu();
+	//JTHpButtons.innerHTML += JTE.getMenu();
 
-	//window.addEventListener( "onloadjson", JTE.onLoad, false );
+	window.addEventListener( "onloadjson", JTE.onLoad, false );
 
 }
 
@@ -31,11 +31,13 @@ JTE.onLoad = function () {
 
 }
 
+
+
 JTE.addFaceIds = function () {
 
 	id = 0;
 
-	const rooms = JTV.json.rooms;
+	const rooms = JTV.json.rooms || [];
 
 	for ( let room of rooms ) {
 
@@ -52,10 +54,8 @@ JTE.addFaceIds = function () {
 
 	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
 
-	//htm = `<button onclick=console.log(this.value); value=23 >faces</button>`;
-
-	//JTVdivJsonTree.innerHTML = JTVdivJsonTree.innerHTML.replace( /xxxx/g, htm );
 };
+
 
 
 JTE.addHighLight = function ( id ) {
@@ -90,9 +90,10 @@ JTE.addHighLight = function ( id ) {
 	}
 
 	shape.material.needsUpdate = true;
-
 	//console.log( 'shape mat', shape.material );
+
 }
+
 
 
 JTE.init();

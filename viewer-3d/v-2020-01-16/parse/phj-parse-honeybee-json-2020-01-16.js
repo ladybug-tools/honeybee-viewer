@@ -24,7 +24,6 @@ PHJ.processJson = function () {
 		Floor: "brown",
 		RoofCeiling: "red",
 
-
 	};
 
 
@@ -34,11 +33,13 @@ PHJ.processJson = function () {
 
 	const rooms = JTV.json.rooms || [];
 
-	id = 0;
+	let id = 0;
 
 	for ( let room of rooms ) {
 
 		const faces = room.faces;
+
+		if ( room.indoor_shades ) { PHJ.parseShades( room.indoor_shades ); }
 
 		for ( let face of faces ) { //console.log( '', face.face_type );
 
@@ -50,65 +51,31 @@ PHJ.processJson = function () {
 
 			const apertures = face.apertures;
 
-			if ( apertures ) {
-				//console.log( 'apertures', apertures.length );
-				openings.push( ...apertures )
-
-			}
-
+			if ( apertures ) { openings.push( ...apertures ); }
 
 			const doors = face.doors;
 
-			if ( doors ) {
-				//console.log( 'doors', doors );
+			if ( doors ) { openings.push( ...doors ) }
 
-				openings.push( ...doors )
+			if ( face.indoor_shades ) { PHJ.parseShades( face.indoor_shades ); }
 
-			}
-
-			const indoorShades = face.indoor_shades;
-
-			if ( indoorShades ) {
-
-				console.log( 'indoorShades', indoorShades );
-
-			}
-
-			const outdoorShades = face.outdoor_shades;
-
-			if ( outdoorShades ) {
-
-				//console.log( 'outdoorShades', outdoorShades );
-
-				const boundary = outdoorShades[ 0 ].geometry.boundary;
-
-				const vertices = boundary.map( point => new THREE.Vector3().fromArray( point ) );
-
-				const shape = PHJ.addShape3d( vertices, [], "darkgray" );
-
-				PHJ.group.add( shape );
-
-			}
+			if ( face.outdoor_shades ) { PHJ.parseShades( face.outdoor_shades ); }
 
 			const color = colors[ face.face_type ];
 
-			//console.log( 'openings', openings );
-
 			holes = PHJ.parseApertures( openings );
-
-			//if ( holes.length ) { console.log( 'holes', holes ); }
 
 			const shape = PHJ.addShape3d( vertices, holes, color );
 
 			shape.userData.id = id++;
-
-			//shape.position.z = id;
 
 			PHJ.group.add( shape );
 
 		}
 
 	}
+
+	if ( JTV.json.orphaned_shades ) { PHJ.parseShades( JTV.json.orphaned_shades ); }
 
 	THR.scene.add( PHJ.group );
 
@@ -141,6 +108,26 @@ PHJ.parseApertures = function ( apertures ) {
 	return holes;
 
 }
+
+
+PHJ.parseShades = function( shades ) {
+
+
+	for ( shade of shades ) {
+
+		const boundary = shade.geometry.boundary;
+
+		const vertices = boundary.map( point => new THREE.Vector3().fromArray( point ) );
+
+		const shape = PHJ.addShape3d( vertices, [], "darkgray" );
+
+		PHJ.group.add( shape );
+
+
+	}
+
+}
+
 
 PHJ.addShape3d = function ( vertices, holes, color ) {
 
@@ -176,6 +163,8 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 	return mesh;
 
 };
+
+
 
 PHJ.getTempVertices = function( vertices ) {
 
