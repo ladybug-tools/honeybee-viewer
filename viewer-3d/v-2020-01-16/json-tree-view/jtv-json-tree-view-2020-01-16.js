@@ -1,5 +1,5 @@
 // copyright 2020 Theo Armour. MIT license.
-/* global GFL, JTVdivJsonTreeView, JTVdivJsonTree */
+/* global GFO, JTVdivJsonTreeView, JTVdivJsonTree */
 // jshint esversion: 6
 // jshint loopfunc: true
 
@@ -7,12 +7,14 @@
 
 const JTV = {};
 
+
 JTV.target = JTVdivJsonTreeView;
-JTV.root = "model"
+JTV.root = "model";
+JTV.json = undefined;
 
 JTV.init = function () {
 
-	window.addEventListener( "onloadglf", JTV.onLoad, false );
+	window.addEventListener( "onloadjson", JTV.onLoad, false );
 
 	JTV.target.innerHTML = JTV.getMenu();
 
@@ -20,9 +22,13 @@ JTV.init = function () {
 
 
 
-JTV.onLoad = function ( event ) { // console.log( 'event', event );
+JTV.onLoad = function ( event ) {
 
-	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, GFL.json, 0 );
+	//console.log( 'JTV event', event );
+
+	//JTV.json = JTV.json || GFO.json;
+
+	JTVdivJsonTree.innerHTML = JTV.parseJson( JTV.root, JTV.json, 0 );
 
 	const details = JTVdivJsonTree.querySelectorAll( "details" );
 
@@ -38,15 +44,13 @@ JTV.getMenu = function () {
 
 	<details open >
 
-		<summary>JSON tree view <span class=help onmouseover=divDetails.hidden=false >?</span></summary>
+		<summary>
+			JSON tree view
 
-		<p id=divDetails onmouseout=divDetails.hidden=true hidden >JSON rendered to a tree view using Theo's parser script</p>
-
-		<p id=JTVpButtons >
-			<button id=but onclick=JTV.toggleAll(); >close all</button>
-			<button id=but onclick=JTV.toggleAll(true); >open all</button>
-			<!-- <button id=but onclick=JTV.addUrls(); >clickable links</button> -->
-		</p>
+			<span class="couponcode" >??<span class="coupontooltip" >
+				JSON rendered to a tree view using Theo's parser script</p>
+			</span></span>
+		</summary>
 
 		<div id="JTVdivJsonTree"></div>
 
@@ -83,7 +87,7 @@ JTV.getString = function ( key, item, index ) { //console.log( 'string', key, it
 	//if ( typeof item === "string" ) { item = item.replace( /<[^>]*>/g, '' ); }
 	//if ( typeof item === "number" ) { item = item.toLocaleString() };
 
-	return `<div>${ key }: <span style=color:blue >${ item }<span></div>`;
+	return `<div>${ key }: <span style=color:green >${ item }<span></div>`;
 
 };
 
@@ -111,22 +115,6 @@ JTV.getObject = function ( key, item, index ) {
 	return `<details style="margin: 1ch 0 1ch 1ch;" >
 		<summary>${ key } ${ index }: { ${ keys.length } }</summary>${ htm }
 	</details>`;
-
-};
-
-
-
-JTV.toggleAll = function ( boole = false ) {
-
-	JTVdivJsonTree.querySelectorAll( "details" ).forEach( detail => detail.open = boole );
-
-};
-
-
-JTV.addUrls = function () {
-
-	JTVdivJsonTree.innerHTML = JTVdivJsonTree.innerHTML.replace(
-		/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1">$1</a> ' );
 
 };
 

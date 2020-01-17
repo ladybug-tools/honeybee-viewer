@@ -22,7 +22,8 @@ PHJ.processJson = function () {
 
 		Wall: "beige",
 		Floor: "brown",
-		RoofCeiling: "red"
+		RoofCeiling: "red",
+
 
 	};
 
@@ -41,22 +42,17 @@ PHJ.processJson = function () {
 
 		for ( let face of faces ) { //console.log( '', face.face_type );
 
-			let holes;
+			openings = [];
+
 			const boundary = face.geometry.boundary;
 
 			const vertices = boundary.map( point => new THREE.Vector3().fromArray( point ) );
 
-
 			const apertures = face.apertures;
 
 			if ( apertures ) {
-
 				//console.log( 'apertures', apertures.length );
-
-				holes = PHJ.parseApertures( apertures );
-
-				//console.log( 'holes', holes );
-
+				openings.push( ...apertures )
 
 			}
 
@@ -64,8 +60,9 @@ PHJ.processJson = function () {
 			const doors = face.doors;
 
 			if ( doors ) {
+				//console.log( 'doors', doors );
 
-				console.log( 'doors', doors );
+				openings.push( ...doors )
 
 			}
 
@@ -81,11 +78,25 @@ PHJ.processJson = function () {
 
 			if ( outdoorShades ) {
 
-				console.log( 'outdoorShades', outdoorShades );
+				//console.log( 'outdoorShades', outdoorShades );
+
+				const boundary = outdoorShades[ 0 ].geometry.boundary;
+
+				const vertices = boundary.map( point => new THREE.Vector3().fromArray( point ) );
+
+				const shape = PHJ.addShape3d( vertices, [], "darkgray" );
+
+				PHJ.group.add( shape );
 
 			}
 
 			const color = colors[ face.face_type ];
+
+			//console.log( 'openings', openings );
+
+			holes = PHJ.parseApertures( openings );
+
+			//if ( holes.length ) { console.log( 'holes', holes ); }
 
 			const shape = PHJ.addShape3d( vertices, holes, color );
 
@@ -108,7 +119,7 @@ PHJ.processJson = function () {
 
 PHJ.parseApertures = function ( apertures ) {
 
-	holes = [];
+	const holes = [];
 
 	for ( aperture of apertures ) {
 
@@ -136,10 +147,16 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 	tempVertices = PHJ.getTempVertices( vertices )
 	const shape = new THREE.Shape( tempVertices );
 
-	if ( holes ) {
-		shape.holes.push( holes[ 0 ].path );
-		vertices = vertices.concat( holes[ 0 ].vertices.reverse());
+	if ( holes.length ) {
+
+		holes.forEach( hole => {
+
+		shape.holes.push( hole.path );
+		vertices = vertices.concat( hole.vertices.reverse());
 		//console.log( 'vertices', vertices );
+
+		})
+
 	}
 
 	const shapeGeometry = new THREE.ShapeGeometry( shape );
