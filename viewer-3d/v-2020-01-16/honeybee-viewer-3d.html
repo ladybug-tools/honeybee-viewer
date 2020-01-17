@@ -44,20 +44,7 @@
 
 	</header>
 
-	<p>
-		<button onclick=THR.controls.reset(); title="Return to default view">reset view</button>
-
-		<button onclick=THR.zoomObjectBoundingSphere(PHJ.group); title="zoom without shifting camera angle">zoom all</button>
-
-	</p>
-
-	<p>
-		<button onclick="THR.controls.autoRotate=!THR.controls.autoRotate">rotation</button>
-	</p>
-
-	<p>
-		<input type="range" id="inpSpeed" onclick="sceneRotation=0.03 * this.value;" />
-	</p>
+	<div id=THRVdivThreejsView ></div>
 
 	<details open>
 
@@ -107,6 +94,7 @@
 
 </main>
 
+<script src="three/thrv-three-view-2020-01-16.js"></script>
 <script src="three/thrt-three-toggles-2020-01-11-00.js"></script>
 
 <script src="browse-files/frj-file-reader-json-2020-01-15.js"></script>
