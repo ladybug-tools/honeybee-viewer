@@ -25,13 +25,13 @@ View Honeybee models in 3D in your browser using the WebGL and the Three.js Java
 
 * [Honeybee Viewer 3D 2020-01-16]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-16/honeybee-viewer-3d.html)
 * jtv-json-tree-view-2020-01-16.js
-	* Strings from blue to green
+	* R: Strings from blue to green
 * jth-json-tree-helper-2020-01-16.js
-	* comment out 'clickable links' ang popup help
+	* R: comment out 'clickable links' ang popup help
 * jte-json-tree-edit-2020-01-16.js
-	* Working again
-	* Clicking button acts as toggle
-	* Only one face is highlighted at a time
+	* B: Working again
+	* F: Clicking button acts as toggle
+	* F: Only one face is highlighted at a time
 * [Sample File Viewer 3d 2020-01-10-00]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-10-00/sample-file-viewer-3d.html )
 	* style-2020-01-10.js
 		* B: Views better on very very small devices

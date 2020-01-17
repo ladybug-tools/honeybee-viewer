@@ -79,10 +79,6 @@ JTE.addHighLight = function ( id ) {
 
 	}
 
-	//console.log( 'shape', shape, shape, id );
-
-	//shape.material.color = new THREE.Color( "black" );
-
 	if ( shape.material.emissive.getHex() !== 16711680 ) {
 
 		shape.material.emissive.setHex( 0xff0000 );
@@ -91,13 +87,11 @@ JTE.addHighLight = function ( id ) {
 
 		shape.material.emissive.setHex( 0x000000 );
 
-
 	}
-
 
 	shape.material.needsUpdate = true;
 
-	console.log( 'shape mat', shape.material );
+	//console.log( 'shape mat', shape.material );
 }
 
 
