@@ -5,24 +5,24 @@ value="You are now in a GitHub web page view - Click this button to view this re
 
 
 
-# Honeybee Viewer Read Me
+# [Honeybee Viewer Read Me]( ./index.html )
 
 
 ## Honeybee Viewer 3D
 
 View data in 3D with the Three.js renderer
 
-### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/honeybee-viewer-3d/
+### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/viewer-3d/
 
-### [Honeybee Viewer 3D Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html/honeybee-viewer-3d/readme.html)
+### [Honeybee Viewer 3D Read Me ]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/readme.html)
 
 ## Honeybee Viewer
 
 View Honeybee JSON as a text only tree view
 
-### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/honeybee-viewer/
+### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/viewer/
 
-### [Honeybee Viewer Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html/honeybee-viewer/readme.html)
+### [Honeybee Viewer Read Me ]( https://www.ladybug.tools/honeybee-viewer/viewer/readme.html)
 
 ## JSON Tree Viewer
 
