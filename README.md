@@ -14,7 +14,7 @@ View data in 3D with the Three.js renderer
 
 ### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/honeybee-schema-viewer-3d/
 
-### [Honeybee Schema Viewer 3D Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html#honeybee-schema-viewer-3d/README.md)
+### [Honeybee Schema Viewer 3D Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html/honeybee-schema-viewer-3d/readme.html)
 
 ## Honeybee Schema Viewer
 
@@ -22,7 +22,7 @@ View Honeybee JSON as a text only tree view
 
 ### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/honeybee-schema-viewer/
 
-### [Honeybee Schema Viewer Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html#honeybee-schema-viewer/README.md)
+### [Honeybee Schema Viewer Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html/honeybee-schema-viewer/readme.html)
 
 ## JSON Tree Viewer
 
@@ -76,4 +76,4 @@ Replace url
 
 ***
 
-# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <center title="hello!" ><img src='https://ladybug.tools/artwork/icons_bugs/ico/spider.ico' height=24 > </a></a></center>
+# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <center title="hello!" ><img src='https://ladybug.tools/artwork/icons_bugs/ico/honeybee.ico' height=24 > </a></a></center>
