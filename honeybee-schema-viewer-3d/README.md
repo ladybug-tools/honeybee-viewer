@@ -94,5 +94,5 @@ Sample File Viewer 3D 2020-01-07
 
 ***
 
-# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > ❦ </a></center>
+# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; >  </a></center>
 

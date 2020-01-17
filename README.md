@@ -76,4 +76,4 @@ Replace url
 
 ***
 
-# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <center title="hello!" ><img src='https://ladybug.tools/artwork/icons_bugs/ico/honeybee.ico' height=24 > </a></a></center>
+# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src='assets/honeybee.ico' height=24 > </a></center>
