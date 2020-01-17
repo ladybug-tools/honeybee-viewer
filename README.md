@@ -8,21 +8,21 @@ value="You are now in a GitHub web page view - Click this button to view this re
 # Honeybee Viewer Read Me
 
 
-## Honeybee Schema Viewer 3D
+## Honeybee Viewer 3D
 
 View data in 3D with the Three.js renderer
 
-### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/honeybee-schema-viewer-3d/
+### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/honeybee-viewer-3d/
 
-### [Honeybee Schema Viewer 3D Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html/honeybee-schema-viewer-3d/readme.html)
+### [Honeybee Viewer 3D Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html/honeybee-viewer-3d/readme.html)
 
-## Honeybee Schema Viewer
+## Honeybee Viewer
 
 View Honeybee JSON as a text only tree view
 
-### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/honeybee-schema-viewer/
+### Preferred or 'canonical' link:<br> https://www.ladybug.tools/honeybee-viewer/honeybee-viewer/
 
-### [Honeybee Schema Viewer Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html/honeybee-schema-viewer/readme.html)
+### [Honeybee Viewer Read Me ]( https://www.ladybug.tools/honeybee-viewer/index.html/honeybee-viewer/readme.html)
 
 ## JSON Tree Viewer
 
@@ -76,4 +76,4 @@ Replace url
 
 ***
 
-# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src='assets/honeybee.ico' height=24 > </a></center>
+# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src='./honeybee.ico' height=24 > </a></center>
