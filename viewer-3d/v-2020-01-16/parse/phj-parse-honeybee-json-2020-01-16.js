@@ -166,7 +166,7 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 
 
 
-PHJ.getTempVertices = function( vertices ) {
+PHJ.getTempVertices = function ( vertices ) {
 
 	const triangle = new THREE.Triangle( vertices[ 2 ], vertices[ 1 ], vertices[ 0 ] );
 	const normal = triangle.getNormal( new THREE.Vector3() );
@@ -179,7 +179,7 @@ PHJ.getTempVertices = function( vertices ) {
 
 	return tempVertices;
 
-}
+};
 
 
 PHJ.init();
