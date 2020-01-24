@@ -73,7 +73,7 @@ THR.onLoad = function ( event ) {
 
 	TSG.onLoad();
 
-//TSF.onLoad();
+	//TSF.onLoad();
 
 	//THRV.zoomToFitObject();
 
@@ -82,7 +82,7 @@ THR.onLoad = function ( event ) {
 
 THR.onStart = function () {
 
-	THRVchkDelta.checked = false;
+	//THRVchkDelta.checked = false;
 
 	THR.cameraDelta = 0;
 
@@ -115,7 +115,6 @@ THR.animate = function() {
 	requestAnimationFrame( THR.animate );
 	THR.renderer.render( THR.scene, THR.camera );
 	THR.controls.update();
-
 
 };
 
