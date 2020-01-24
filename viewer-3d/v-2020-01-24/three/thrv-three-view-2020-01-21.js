@@ -43,10 +43,10 @@ THRV.getMenu = function () {
 			rotation <output id=outDelta >0.005<output>
 		</label>
 	</p>
-	-->
 	<p>
-		<input type="range" id=rngDelta  value=75 onclick="THRV.setCameraPositionDelta()" title="rotation speed" >
+	<input type="range" id=rngDelta  value=75 onclick="THRV.setCameraPositionDelta()" title="rotation speed" >
 	</p>
+	-->
 	<p>
 		<button onclick=THRV.setCameraPosition(0,0,200)>top</button>
 		<button onclick=THRV.setCameraPosition(0,0,-200)>bottom</button>
