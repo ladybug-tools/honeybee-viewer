@@ -36,13 +36,14 @@ THRV.getMenu = function () {
 		<button onclick=THRV.zoomToFitObject(); title="zoom without shifting camera angle">zoom fit</button>
 
 	</p>
+	<!--
 	<p>
 		<label>
 			<input type=checkbox id=THRVchkDelta onclick="THRV.setCameraPositionDelta()" checked>
 			rotation <output id=outDelta >0.005<output>
 		</label>
 	</p>
-
+	-->
 	<p>
 		<input type="range" id=rngDelta  value=75 onclick="THRV.setCameraPositionDelta()" title="rotation speed" >
 	</p>
