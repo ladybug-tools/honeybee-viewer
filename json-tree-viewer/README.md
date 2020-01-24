@@ -9,7 +9,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 <iframe src=https://jaanga.github.io/tootoo-templates/basic-html.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
 -->
 
-## Full Screen: [ JSON Tree Viewer ]( ./v-2020-01-14/json-tree-view.html )
+## Full Screen: [ JSON Tree Viewer ]( ./index.html )
 
 
 ## Concept
