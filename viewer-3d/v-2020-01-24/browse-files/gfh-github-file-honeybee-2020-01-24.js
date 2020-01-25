@@ -29,7 +29,7 @@ GFH.getMenu = function() {
 		<summary>Honeybee Schema sample files</summary>
 
 		<p>
-			A list of files from <a href="https://github.com/ladybug-tools-in2/honeybee-schema/tree/master/honeybee_model_schema/samples" target="_blank">ladybug-tools-in2
+			A list of files from <a href="https://github.com/ladybug-tools-in2/honeybee-schema/tree/master/honeybee_schema/samples" target="_blank">ladybug-tools-in2
 			</a> on GitHub. Tooltips indicate file size in bytes. Click file title to view its contents.
 			More details available in JavaScript developer console.
 		</p>

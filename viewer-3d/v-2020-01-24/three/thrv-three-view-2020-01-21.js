@@ -66,7 +66,7 @@ THRV.getMenu = function () {
 
 
 
-THRV.zoomToFitObject = function (camera = THR.camera, controls = THR.controls, object = THR.group, fitOffset = 1.2  ) {
+THRV.zoomToFitObject = function ( camera = THR.camera, controls = THR.controls, object = THR.group, fitOffset = 1.2 ) {
 
 	const box = new THREE.Box3().setFromObject( object );
 
@@ -81,9 +81,9 @@ THRV.zoomToFitObject = function (camera = THR.camera, controls = THR.controls, o
 	const distance = fitOffset * Math.max( fitHeightDistance, fitWidthDistance );
 
 	const direction = controls.target.clone()
-	  .sub( camera.position )
-	  .normalize()
-	  .multiplyScalar( distance );
+		.sub( camera.position )
+		.normalize()
+		.multiplyScalar( distance );
 
 	controls.maxDistance = distance * 10;
 	controls.target.copy( center );
@@ -97,17 +97,17 @@ THRV.zoomToFitObject = function (camera = THR.camera, controls = THR.controls, o
 
 	THR.distance = distance;
 
-	camera.position.copy( controls.target ).sub(direction);
+	camera.position.copy( controls.target ).sub( direction );
 
 	controls.update();
 
-	let event = new Event( "onresetthree", {"bubbles": true, "cancelable": false, detail: true } );
+	let event = new Event( "onresetthree", { "bubbles": true, "cancelable": false, detail: true } );
 
 	//window.addEventListener( "onrresetthree", doThings, false );
 
 	window.dispatchEvent( event );
 
-}
+};
 
 
 
@@ -115,7 +115,7 @@ THRV.setCameraPositionDelta = function () {
 
 	if ( THRVchkDelta.checked ) {
 
-		THR.cameraDelta = Number( rngDelta.value )/ 5000 - 0.01;
+		THR.cameraDelta = Number( rngDelta.value ) / 5000 - 0.01;
 
 		outDelta.value = THR.cameraDelta.toLocaleString();
 
@@ -128,18 +128,19 @@ THRV.setCameraPositionDelta = function () {
 };
 
 
-THRV.setCameraPosition = function( x = -100, y = -100, z = 100 ) {
+
+THRV.setCameraPosition = function ( x = -100, y = -100, z = 100 ) {
 
 	THR.camera.position.set( x, y, z );
 
 	THR.camera.up.set( 0, 0, 1 );
 
-	THRVchkDelta.checked = false;
-	THR.cameraDelta = 0;
+	//THRVchkDelta.checked = false;
+	//THR.cameraDelta = 0;
 
-	//THRV.zoomObjectBoundingSphere(mesh);
+	THRV.zoomToFitObject();
 
-}
+};
 
 
 THRV.init();

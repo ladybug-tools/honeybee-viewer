@@ -12,6 +12,13 @@ JTV.target = JTVdivJsonTreeView;
 JTV.root = "model";
 JTV.json = undefined;
 
+
+
+JTV.schemas = [
+	"Plane", "Face3D", "Ground", "Outdoors", "Adiabatic", "Surface", "ShadeEnergyPropertiesAbridged", "ShadePropertiesAbridged", "Shade", "ApertureEnergyPropertiesAbridged", "AperturePropertiesAbridged", "Aperture", "DoorEnergyPropertiesAbridged", "DoorPropertiesAbridged", "Door", "FaceEnergyPropertiesAbridged", "FacePropertiesAbridged", "Face", "PeopleAbridged", "LightingAbridged", "ElectricEquipmentAbridged", "GasEquipmentAbridged", "InfiltrationAbridged", "VentilationAbridged", "SetpointAbridged", "RoomEnergyPropertiesAbridged", "RoomPropertiesAbridged", "Room", "WallSetAbridged", "FloorSetAbridged", "RoofCeilingSetAbridged", "ApertureSetAbridged", "DoorSetAbridged", "ConstructionSetAbridged", "OpaqueConstructionAbridged", "WindowConstructionAbridged", "ShadeConstruction", "EnergyMaterial", "EnergyMaterialNoMass", "EnergyWindowMaterialGas", "EnergyWindowMaterialGasCustom", "EnergyWindowMaterialGasMixture", "EnergyWindowMaterialSimpleGlazSys", "EnergyWindowMaterialBlind", "EnergyWindowMaterialGlazing", "EnergyWindowMaterialShade", "IdealAirSystemAbridged", "ProgramTypeAbridged", "ScheduleDay", "ScheduleRuleAbridged", "ScheduleRulesetAbridged", "ScheduleFixedIntervalAbridged", "ScheduleTypeLimit", "ModelEnergyProperties", "ModelProperties", "Model"
+];
+
+
 JTV.init = function () {
 
 	window.addEventListener( "onloadjson", JTV.onLoad, false );
@@ -48,8 +55,10 @@ JTV.getMenu = function () {
 			JSON tree view
 
 			<span class="couponcode" >??<span class="coupontooltip" >
-				JSON rendered to a tree view using Theo's parser script</p>
-			</span></span>
+
+				<p>JSON rendered to a tree view using the Honeybee JSON Tree Viewer script</p>
+
+				<p>Items with yellow backgrounds are links to the <a href="https://ladybug-tools-in2.github.io/honeybee-schema/model.html" target="_blank">Honeybee Model Schema</a></p>
 		</summary>
 
 		<div id="JTVdivJsonTree"></div>
@@ -81,13 +90,21 @@ JTV.parseJson = function ( key = "", item = {}, index = 0 ) { //console.log( '',
 
 
 
+
 JTV.getString = function ( key, item, index ) { //console.log( 'string', key, item, index  );
 
 	// https://stackoverflow.com/questions/8299742/is-there-a-way-to-convert-html-into-normal-text-without-actually-write-it-to-a-s
 	//if ( typeof item === "string" ) { item = item.replace( /<[^>]*>/g, '' ); }
 	//if ( typeof item === "number" ) { item = item.toLocaleString() };
 
-	return `<div>${ key }: <span style=color:green >${ item }<span></div>`;
+	const htm = JTV.schemas.includes( item ) ?
+
+		`<div>${ key }: <a href="https://ladybug-tools-in2.github.io/honeybee-schema/model.html#tag/${ item.toLowerCase() }_model" style=background-color:yellow;color:green;cursor:help; target="_blank">${ item }</a></div>`
+		:
+		`<div>${ key }: <span style=color:green >${ item }<span></div>`;
+
+
+	return htm;
 
 };
 

@@ -23,6 +23,11 @@ View JSON files a tree view
 
 ## Links of Interest
 
+JSON searches
+
+* https://dev.to/killants/search-through-a-json-object-using-javascript-1a00
+* https://stackoverflow.com/questions/40713171/how-to-search-a-json-files-key-case-insensititvely
+
 JSON Tree viewers
 * https://www.cssscript.com/json-data-tree-view/
 	* https://github.com/pgrabovets/json-view

@@ -6,9 +6,9 @@
 
 const GFH = {};
 
-GFH.url = "https://api.github.com/repos/ladybug-tools-in2/honeybee-model-schema/git/trees/master?recursive=1";
-GFH.prefix = "https://rawcdn.githack.com/ladybug-tools-in2/honeybee-model-schema/master/";
-GFH.source = "https://github.com/ladybug-tools-in2/honeybee_model_schema/blob/master/honeybee_model_schema/samples/";
+GFH.url = "https://api.github.com/repos/ladybug-tools-in2/honeybee-schema/git/trees/master?recursive=1";
+GFH.prefix = "https://rawcdn.githack.com/ladybug-tools-in2/honeybee-schema/master/";
+GFH.source = "https://github.com/ladybug-tools-in2/honeybee_schema/blob/master/honeybee_schema/samples/";
 
 // GFH.init() is at end of file
 
@@ -29,7 +29,7 @@ GFH.getMenu = function() {
 		<summary>Honeybee Schema sample files</summary>
 
 		<p>
-			A list of files from <a href="https://github.com/ladybug-tools-in2/honeybee-schema/tree/master/honeybee_model_schema/samples" target="_blank">ladybug-tools-in2
+			A list of files from <a href="https://github.com/ladybug-tools-in2/honeybee-schema/tree/master/honeybee_schema/samples" target="_blank">ladybug-tools-in2
 			</a> on GitHub. Tooltips indicate file size in bytes. Click file title to view its contents.
 			More details available in JavaScript developer console.
 		</p>

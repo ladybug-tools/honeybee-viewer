@@ -38,15 +38,18 @@ GFO.getMenu = function() {
 	</details>
 
 
-	<details>
+	<details ontoggle=GFO.onToggle() >
 
 		<summary>Raw JSON file
 
 		<span class="couponcode" >??<span id=divDetails class="coupontooltip" >
+
 			<p>The plain text JSON source code as read directly from the GitHub repository. The text is editable.</p>
 
 			<p>It could even be saveable, is you ask nicely.</p>
-		</span></span>
+
+			<p>Note: the text is added to the menu only as and when you open the panel, so a even a large file should slow things down</p>
+			</span></span>
 
 		</summary>
 
@@ -73,13 +76,14 @@ GFO.getFileJson = function () {
 	//xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
 	xhr.onload = ( xhr ) => {
 
+		GFO.rawJson = xhr.target.response;
 		GFO.json = JSON.parse( xhr.target.response );
 		//console.log( 'xhr', xhr );
 		console.log( 'GFO.json', GFO.json );
 
-		GFO.loaded = xhr.loaded
+		GFO.loaded = xhr.loaded;
 
-		GFOtxtRawJson.value = xhr.target.response;
+		//GFOtxtRawJson.value = xhr.target.response;
 
 		JTV.json = GFO.json;
 
@@ -114,5 +118,14 @@ GFO.onLoad = function ( event ) {
 };
 
 
+GFO.onToggle = function () {
+
+	if ( !GFOtxtRawJson.value === "" ) {
+		return;
+	}
+
+	GFOtxtRawJson.value = GFO.rawJson;
+
+}
 
 GFO.init();
