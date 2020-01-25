@@ -9,7 +9,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 <iframe src=https://jaanga.github.io/tootoo-templates/basic-html.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
 -->
 
-## Full Screen: [ JSON Tree Viewer ]( ./index.html )
+## Full Screen: [ JSON Tree Viewer ]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/ )
 
 
 ## Concept
@@ -46,6 +46,10 @@ replace url
 * https://stackoverflow.com/questions/37684/how-to-replace-plain-urls-with-links
 
 ## Change Log
+
+### 2020-01-24 ~ Theo
+
+* F: Adds Dragonfly sample files
 
 ### 2020-01-14 ~ Theo
 

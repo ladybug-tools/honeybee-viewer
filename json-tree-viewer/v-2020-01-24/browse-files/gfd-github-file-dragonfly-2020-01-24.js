@@ -80,7 +80,7 @@ GFD.getOptions = function () {
 
 
 
-GFD.getUrl = function ( index = 28 ) {
+GFD.getUrl = function ( index = 3 ) {
 
 	const item = GFD.filesData[ index ];
 
