@@ -85,7 +85,8 @@ summary {
 
 
 .couponcode {
-	float: right
+	cursor: help;
+	float: right;
 }
 
 .couponcode:hover {
@@ -143,7 +144,7 @@ summary {
 	overflow: auto;
 	padding: 0 1rem;
 	position: fixed;
-	resize:both;
+	resize: both;
 	transition: left 0.5s;
 	top: 0;
 	width: var(--mnu-width);
