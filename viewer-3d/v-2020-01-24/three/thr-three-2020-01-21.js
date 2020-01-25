@@ -15,7 +15,7 @@ THR.cameraRadius = 141.4;
 THR.cameraDelta = 0.005;
 
 let mouse = new THREE.Vector2(), intersected;
-let raycaster
+let raycaster;
 
 THR.init = function () {
 
@@ -151,9 +151,9 @@ THR.animate = function() {
 
 			divHeadsUp.innerHTML = `
 			<div>
-			${ intersected.uuid }<br>
-			${ intersected.name}</br>
-			</div>`
+			uuid: ${ intersected.uuid }<br>
+			name: ${ intersected.name }</br>
+			</div>`;
 
 		}
 
