@@ -67,6 +67,7 @@ PHJ.processJson = function () {
 
 			const shape = PHJ.addShape3d( vertices, holes, color );
 
+			shape.name = face.display_name
 			shape.userData.id = id++;
 
 			THR.group.add( shape );
