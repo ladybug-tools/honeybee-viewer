@@ -8,14 +8,15 @@ let THR = {};
 THR.center = new THREE.Vector3( 0, 0, 0 );
 THR.radius = 50;
 
-THR.group = undefined;
+THR.group = new THREE.Group();
 
 THR.cameraAngle = 0;
 THR.cameraRadius = 141.4;
 THR.cameraDelta = 0.005;
 
-let mouse = new THREE.Vector2(), intersected;
-let raycaster;
+let mouse = new THREE.Vector2();
+var intersected;
+var raycaster;
 
 THR.init = function () {
 
@@ -67,7 +68,7 @@ THR.init = function () {
 
 	window.dispatchEvent( event );
 
-	THR.animate();
+
 
 };
 
@@ -98,8 +99,6 @@ THR.onStart = function () {
 	THR.renderer.domElement.removeEventListener( 'heel', THR.onStart );
 	THR.renderer.domElement.removeEventListener( 'mousedown', THR.onStart );
 	THR.renderer.domElement.removeEventListener( 'touchstart', THR.onStart );
-
-
 
 };
 
@@ -140,12 +139,14 @@ THR.animate = function() {
 	var intersects = raycaster.intersectObjects( THR.group.children );
 
 	if ( intersects.length > 0 ) {
+		//console.log( 'intersects', intersects );
 
 		if ( intersected != intersects[ 0 ].object ) {
 
 			if ( intersected ) intersected.material.emissive.setHex( intersected.currentHex );
 
 			intersected = intersects[ 0 ].object;
+
 			intersected.currentHex = intersected.material.emissive.getHex();
 			intersected.material.emissive.setHex( 0xff0000 );
 

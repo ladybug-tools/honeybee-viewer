@@ -7,8 +7,6 @@
 var PHJ = {};
 
 
-
-
 PHJ.init = function () {
 
 	window.addEventListener( "onloadjson", PHJ.processJson, false );
@@ -177,6 +175,9 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 
 	mesh.geometry.computeVertexNormals();
 	mesh.geometry.computeFaceNormals();
+	mesh.geometry.computeBoundingBox();
+	//mesh.geometry.computeBoundingSphere();
+	mesh.updateMatrixWorld();
 
 	//scene.add( mesh );
 
