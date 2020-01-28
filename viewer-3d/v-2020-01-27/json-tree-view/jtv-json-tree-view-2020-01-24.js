@@ -58,7 +58,7 @@ JTV.getMenu = function () {
 
 				<p>JSON rendered to a tree view using the Honeybee JSON Tree Viewer script</p>
 
-				<p>Items with yellow backgrounds are links to the <a href="https://ladybug-tools-in2.github.io/honeybee-schema/model.html" target="_blank">Honeybee Model Schema</a></p>
+				<p>Items with yellow backgrounds are links to the <a href="https://ladybug-tools.github.io/honeybee-schema/model.html" target="_blank">Honeybee Model Schema</a></p>
 		</summary>
 
 		<div id="JTVdivJsonTree"></div>
@@ -99,7 +99,7 @@ JTV.getString = function ( key, item, index ) { //console.log( 'string', key, it
 
 	const htm = JTV.schemas.includes( item ) ?
 
-		`<div>${ key }: <a href="https://ladybug-tools-in2.github.io/honeybee-schema/model.html#tag/${ item.toLowerCase() }_model" style=background-color:yellow;color:green;cursor:help; target="_blank">${ item }</a></div>`
+		`<div>${ key }: <a href="https://ladybug-tools.github.io/honeybee-schema/model.html#tag/${ item.toLowerCase() }_model" style=background-color:yellow;color:green;cursor:help; target="_blank">${ item }</a></div>`
 		:
 		`<div>${ key }: <span style=color:green >${ item }<span></div>`;
 
