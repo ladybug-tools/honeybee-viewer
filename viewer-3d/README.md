@@ -13,7 +13,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 _<small>Honeybee Viewer 3D</small>_
 
 
-## Full Screen: [Honeybee Viewer 3D]( https://ladybug.tools/honeybee-viewer/viewer-3d/index.html )
+## Full screen demoe with preferred link: [Honeybee Viewer 3D]( https://ladybug.tools/honeybee-viewer/viewer-3d/index.html )
 
 
 ## Concept
@@ -23,15 +23,30 @@ View Honeybee models in 3D in your browser using the WebGL and the Three.js Java
 
 ## Honeybee Viewer 3D
 
-* [Honeybee Viewer 3D 2020-01-24]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-24/honeybee-viewer-3d.html)
-* phj-parse-honeybee-json-2020-01-24.js
-	* R: Has shade fix from https://discourse.threejs.org/t/2d-to-3d-shape-shade-and-texture/12299/5
-	* B: ass through jsHint and cleanup
-* gfh-github-file-honeybee-2020-01-24.js
-	* Don't run if you already have the data
-* thrv-three-view-2020-01-21.js
-	* New zoom fit
+_The following links go to the version as dated_
 
+
+* [Honeybee Viewer 3D 2020-01-27]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-27/honeybee-viewer-3d.html)
+	* thrv-three-view-2020-01-27.js
+		* R: Remove raycasting
+	* thrm-three-mouseover-2020-01-27.js
+		* New module
+		* Improved and working raycasting
+		* Currently - and just for the moment - turns the viewer into a game
+	* phj-parse-honeybee-json-2020-01-24.js
+		* R: Add mesh.computeBoundingBox - helps with raycasting
+	* jtf-json-tree-finder-2020-01-27.js
+		* F: New module
+		* F: Allows you to initiate a text search
+		* F: Displays the findings ****but does not yet locate them****
+* [Honeybee Viewer 3D 2020-01-24]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-24/honeybee-viewer-3d.html)
+	* phj-parse-honeybee-json-2020-01-24.js
+		* R: Has shade fix from https://discourse.threejs.org/t/2d-to-3d-shape-shade-and-texture/12299/5
+		* B: ass through jsHint and cleanup
+	* gfh-github-file-honeybee-2020-01-24.js
+		* Don't run if you already have the data
+	* thrv-three-view-2020-01-21.js
+		* New zoom fit
 * [Honeybee Viewer 3D 2020-01-16]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-16/honeybee-viewer-3d.html)
 * jtv-json-tree-view-2020-01-16.js
 	* R: Strings from blue to green

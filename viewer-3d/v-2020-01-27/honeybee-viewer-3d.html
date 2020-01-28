@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+<meta name = "description" content = "View the Honeybee Schema sample files with a JSON tree viewer" >
+<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
+<meta name=version content="2020-01-27">
+
+<title></title>
+
+<link href="assets/style-2020-01-17.css" rel="stylesheet">
+
+<style>
+	body { margin: 0; overflow: hidden; }
+</style>
+</head>
+
+<body>
+
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r112/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r112/examples/js/controls/OrbitControls.js"></script>
+
+<script src="three/thr-three-2020-01-27.js"></script>
+<script src="three/thra-three-add-2020-01-21.js"></script>
+
+
+<button id="expandButton" onclick="toggleNavMenu();">☰</button>
+
+<nav id="navMenu">
+
+	<header id="hdrTitle">
+
+		<h2>
+			<a id=aSource target=_top title="Source code on GitHub" >
+				<img id=imgIcon height=18 style=opacity:0.5; >
+			</a>
+
+			<a href="" title="Click to reload this page" ><span id=sTitle ></span> <span id=sVersion ></span></a>
+
+			<span class="couponcode" >??<span id=divDescription class="coupontooltip" ></span></span>
+
+		</h2>
+
+	</header>
+
+	<div id=THRVdivThreejsView ></div>
+
+	<details open>
+
+		<summary class=sumMenuTitle>Browse files</summary>
+
+		<div id=FRJdivFileReaderJson ></div>
+
+		<div id=GFHdivGetFilesHoneybee ></div>
+
+		<div id=GFOdivGetFilesOpen></div>
+
+
+		<div id=JTHdivJsonTreeHelper ></div>
+
+		<div id=JTFdivJsonTreeFinder ></div>
+
+		<div id=JTVdivJsonTreeView ></div>
+
+		<div id=JTEdivJsonTreeEdit ></div>
+
+	</details>
+
+
+	<details open>
+
+		<summary class=sumMenuTitle>Settings</summary>
+
+		<div id=TSGdivThreeSceneGround ></div>
+
+		<div id=TSFdivThreeSceneFog  ></div>
+
+		<div id=STMdivSettingsThemeMenu ></div>
+
+		<div id=STMDdivSettingsThemeMenuDropin ></div>
+
+
+	</details>
+
+	<div id="divLog"></div>
+
+	<footer>
+
+		<hr>
+
+		<center title="go to top of menu" ><a href=javascript:navMenu.scrollTo(0,0); style=text-decoration:none; >
+		<img src="assets/honeybee.ico" height=24 ></a>
+		</center>
+
+	</footer>
+
+</nav>
+
+<main id=main>
+
+	<div id="divContent"></div>
+
+</main>
+
+<div id=THRMdivMessage style=position:fixed;top:2rem;right:2rem; >hiii</div>
+
+<script src="three/thrv-three-view-2020-01-21.js"></script>
+<script src="three/thrm-three-mouseover-2020-01-27.js"></script>
+<!--
+
+	<script src="three/thrt-three-toggles-2020-01-11-00.js"></script>
+-->
+
+<script src="browse-files/frj-file-reader-json-2020-01-15.js"></script>
+<script src="browse-files/gfo-github-file-open-2020-01-24.js"></script>
+<script src="browse-files/gfh-github-file-honeybee-2020-01-24.js"></script>
+
+<script src="json-tree-view/jtv-json-tree-view-2020-01-24.js"></script>
+<script src="json-tree-view/jth-json-tree-helper-2020-01-24.js"></script>
+<script src="json-tree-view/jte-json-tree-edit-2020-01-24.js"></script>
+<script src="json-tree-view/jtf-json-tree-finder-2020-01-27.js"></script>
+
+<script src="parse/phj-parse-honeybee-json-2020-01-24.js"></script>
+
+
+<script src="scene/ground/v-2020-01-23/tsg-three-scene-ground.js"></script>
+<script src="scene/fog/v-2020-01-23/tsf-three-scene-fog.js"></script>
+
+
+<script src="settings/shm-settings-html-testing.js"></script>
+<script src=settings/theme/v-2020-01-17/stm-settings-theme-menu.js></script>
+<script src=settings/theme-dropin/v-2020-01-17/stmd-settings-theme-menu-dropin.js></script>
+
+<script>
+
+aSource.href = "https://github.com/ladybug-tools/honeybee-viewer/tree/master/viewer-3d";
+imgIcon.src = "assets/github-mark-32.png";
+
+//sTitle.innerHTML = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
+sTitle.innerHTML = `honeybee <s>viewer</s> gamer 3d`;
+const version = document.head.querySelector( "[ name=version ]" );
+sVersion.innerHTML = version ? version.content : "";
+divDescription.innerHTML = document.head.querySelector( "[ name=description ]" ).content;
+divDescription.innerHTML = `By touching each face multiple times, can you make all the faces go underground?`
+
+
+
+init();
+THR.init();
+THR.animate();
+
+function init() {
+
+	if ( window.innerWidth < 640 || window.innerHeight < 640 ) {
+		toggleNavMenu();
+	}
+
+}
+
+function toggleNavMenu() {
+
+	expandButton.classList.toggle( 'collapsed' );
+	navMenu.classList.toggle( 'collapsed' );
+	divContent.classList.toggle( 'collapsed' );
+
+}
+
+
+</script>
+</body>
+</html>
