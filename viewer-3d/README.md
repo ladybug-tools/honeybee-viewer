@@ -13,7 +13,7 @@ value="You are now in a GitHub web page view - Click this button to view this re
 _<small>Honeybee Viewer 3D</small>_
 
 
-## Full screen demoe with preferred link: [Honeybee Viewer 3D]( https://ladybug.tools/honeybee-viewer/viewer-3d/index.html )
+## Full screen demo with preferred link: [Honeybee Viewer 3D]( https://ladybug.tools/honeybee-viewer/viewer-3d/index.html )
 
 
 ## Concept
