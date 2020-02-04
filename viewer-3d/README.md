@@ -26,6 +26,12 @@ View Honeybee models in 3D in your browser using the WebGL and the Three.js Java
 _The following links go to the version as dated_
 
 
+### [Honeybee Viewer 3D 2020-01-27]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-03/honeybee-viewer-3d.html)
+
+* F: Add link to Builder
+* R: Turn of gaming mode
+* F: Add gfb-github-file-builder-2020-02-03.js
+
 ### [Honeybee Viewer 3D 2020-01-27]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-27/honeybee-viewer-3d.html)
 
 * thrv-three-view-2020-01-27.js
