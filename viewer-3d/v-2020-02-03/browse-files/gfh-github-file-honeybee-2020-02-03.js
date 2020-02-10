@@ -86,7 +86,7 @@ GFH.getOptions = function () {
 
 GFH.getUrl = function ( index = GFH.defaultSelectedIndex) {
 
-	const item = GFH.filesData[ index ];
+	const item = GFH.filesData[   index ];
 
 	//console.log( 'item', item );
 
