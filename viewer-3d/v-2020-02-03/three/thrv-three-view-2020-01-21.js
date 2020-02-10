@@ -14,8 +14,6 @@ THRV.init = function () {
 
 	THRVdivThreejsView.innerHTML = THRV.getMenu();
 
-
-
 };
 
 

@@ -6,6 +6,9 @@
 
 const GFH = {};
 
+GFH.defaultSelectedIndex = 26;
+
+
 GFH.url = "https://api.github.com/repos/ladybug-tools/honeybee-schema/git/trees/master?recursive=1";
 GFH.prefix = "https://rawcdn.githack.com/ladybug-tools/honeybee-schema/master/";
 GFH.source = "https://github.com/ladybug-tools/honeybee-schema/blob/master/samples/";
@@ -58,7 +61,7 @@ GFH.getFileNames = function () {
 
 			GFHselFiles.innerHTML = GFH.getOptions();
 
-			GFHselFiles.selectedIndex = 24; // select a default file
+			GFHselFiles.selectedIndex = GFH.defaultSelectedIndex; // select a default file
 
 			GFH.getUrl(); //GFO.getFileJson(); // load a default file
 
@@ -81,7 +84,7 @@ GFH.getOptions = function () {
 
 
 
-GFH.getUrl = function ( index = 24 ) {
+GFH.getUrl = function ( index = GFH.defaultSelectedIndex) {
 
 	const item = GFH.filesData[ index ];
 

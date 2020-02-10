@@ -126,6 +126,8 @@ GFO.onToggle = function () {
 
 	GFOtxtRawJson.value = GFO.rawJson;
 
-}
+};
+
+
 
 GFO.init();

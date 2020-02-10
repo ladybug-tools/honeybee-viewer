@@ -12,7 +12,6 @@ THRA.init = function () {
 
 THRA.onLoad = function () {
 
-
 	THRA.addLightDirectionals();
 
 	//THR.group = THRA.addMeshes();
@@ -25,7 +24,6 @@ THRA.addLightDirectionals = function() {
 
 	const scene = THR.scene;
 	const camera = THR.camera;
-
 
 	scene.add( new THREE.AmbientLight( 0x888888) );
 	//scene.add( new THREE.AmbientLight( 0x666666 ) );
