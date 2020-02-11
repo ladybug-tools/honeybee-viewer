@@ -9,7 +9,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 <iframe src=https://jaanga.github.io/tootoo-templates/basic-html.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
 -->
 
-## Full Screen: [ JSON Tree Viewer ]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/ )
+## Full screen demo with preferred link: [ JSON Tree Viewer ]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/ )
 
 
 ## Concept
@@ -19,7 +19,30 @@ View JSON files a tree view
 * Very simple code
 * HTML5 only
 * No CSS needed
+* Good number of sample files available for testing
+* View raw data
+* Help text throughout
+* Search and highlight facility
 
+
+## Honeybee JSON Tree View
+
+_The following links go to the version as dated_
+
+
+### [Honeybee Tree View 2020-02-10]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/v-2020-02-10/json-tree-view.html)
+
+* C: Update help text and titles throughout
+* F: Move Tree View display to center screen
+* F: Make JSON Tree finder work as expected
+	* Enter text to search for
+	* Click buttons in results
+	* View item in tree view highlighted in green and scrolled into view
+
+
+### [Honeybee Tree View 2020-01-24]( https://www.ladybug.tools/honeybee-viewer/json-tree-viewer/v-2020-01-24/json-tree-view.html)
+
+* Broken for now
 
 ## Links of Interest
 
@@ -52,6 +75,9 @@ replace url
 
 ## Change Log
 
+* F: Update readme to include links to dated versions
+
+
 ### 2020-01-24 ~ Theo
 
 * F: Adds Dragonfly sample files
@@ -68,4 +94,4 @@ JSON Tree Viewer
 * First commit
 
 ***
-# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > ❦ </a></center>
+# <center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src="assets/spider.ico" height=24 ></a> </a></center>
