@@ -28,9 +28,7 @@ JTH.getMenu = function() {
 		<p id=JTHpButtons >
 			<button id=but onclick=JTH.toggleAll(); >close all</button>
 			<button id=but onclick=JTH.toggleAll(true); >open all</button>
-
 			<!--
-			<button id=JTHbutHelp onclick=JTH.addHelp(); >add links to API</button>
 			<button id=but onclick=JTH.addUrls(); >clickable links</button>
 			<button onclick=JTH.addPopupHelp() title="not useful yet, just adds a title with id" >add popup help</button>
 			-->
@@ -45,7 +43,7 @@ JTH.getMenu = function() {
 
 JTH.onLoad = function () {
 
-	//JTH.addPopupHelp();
+	JTH.addPopupHelp();
 
 	//const details = Array.from( JTVdivJsonTree.querySelectorAll( "details" ) ).filter( det => det.children.length < 10 );
 
@@ -92,15 +90,6 @@ JTH.addPopupHelp = function () {
 	//htm = `<button onclick=console.log(this.value); value=23 >faces</button>`;
 
 	//JTVdivJsonTree.innerHTML = JTVdivJsonTree.innerHTML.replace( /xxxx/g, htm );
-};
-
-
-
-JTH.addHelp = function () {
-
-
-
-
 };
 
 

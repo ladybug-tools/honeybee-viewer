@@ -65,7 +65,7 @@ FRJ.openFile = function ( files ) {
 
 		JTV.json = JSON.parse( FRJ.result );
 
-		FRJ.event = new Event( "onloadjson", {"bubbles": true, "cancelable": false, detail: true } );
+		FRJ.event = new Event( "onloadJson", {"bubbles": true, "cancelable": false, detail: true } );
 
 		//window.addEventListener( "onloadjson", FRJ.onLoad, false )
 
