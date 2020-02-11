@@ -7,7 +7,7 @@
 
 :root {
 	font: 100% monospace;
-	--mnu-width: calc(22rem - 0ch);
+	--mnu-width: calc(30rem - 0ch);
 	/* leave space for small devices */
 	--screen-width: calc(100vw);
 	--headerHeight: 6rem;
