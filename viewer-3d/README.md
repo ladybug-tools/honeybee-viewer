@@ -129,6 +129,11 @@ _The following links go to the version as dated_
 
 ## To Do / Wish List
 
+* 2020-02-12 ~ Theo ~ Add boundary display as lines function
+* 2020-02-12 ~ Theo ~ Add unique floors
+* 2020-02-12 ~ Theo ~ boundary_floor
+* 2020-02-12 ~ Theo ~ Add context shade
+
 
 ## Issues
 
@@ -144,10 +149,11 @@ _The following links go to the version as dated_
 
 ## Links of Interest
 
+* http://techslides.com/how-to-parse-and-search-json-in-javascript
 
 ## Change Log
 
-Itemd here relate to the readme and other non-script matters
+Items here relate to the readme and other non-script matters
 
 ### 2020-01-16 ~ Theo
 
