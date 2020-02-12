@@ -27,6 +27,9 @@ _The following links go to the version as dated_
 
 ### [Honeybee Viewer 3D 2020-02-10]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-10/honeybee-viewer-3d.html)
 
+* F: Click any face to view its properties in the JSON Tree View card in the left menu
+* F: Mouse over any face to see minimal details appear at screen top right JSON Tree View card in the left menu
+* F: Text input search: type in text to search for key or properties to be displayed in  
 * C: Update help text and titles throughout
 * F: Make JSON Tree finder work as expected
 	* Enter text to search for
