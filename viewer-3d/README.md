@@ -25,11 +25,24 @@ View Honeybee models in 3D in your browser using the WebGL and the Three.js Java
 
 _The following links go to the version as dated_
 
+### [Honeybee Viewer 3D 2020-02-13]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-10/honeybee-viewer-3d.html)
+
+* F: Add listing and opening Dragonfly Schema sample files in GitHub repo
+* F: Begins to add second and new algorithm for identifying items of interest
+	* Based on String.match() as opposed to JSON.parse();
+	* Both searching and parsing algorithms appear to work well together and have no conflicts
+	* Output may be identified as the black lines around faces
+* F: Begins to add reading ```floor_boundary``` elements and displaying these in the 3D model view
+
+The new search algorithm is a way of helping me identify geometry elements I do not yet know about and/or have not yet built a parser that creates a face-filling shape.
+
+
+
 ### [Honeybee Viewer 3D 2020-02-10]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-10/honeybee-viewer-3d.html)
 
 * F: Click any face to view its properties in the JSON Tree View card in the left menu
 * F: Mouse over any face to see minimal details appear at screen top right JSON Tree View card in the left menu
-* F: Text input search: type in text to search for key or properties to be displayed in  
+* F: Text input search: type in text to search for key or properties to be displayed in
 * C: Update help text and titles throughout
 * F: Make JSON Tree finder work as expected
 	* Enter text to search for
