@@ -25,7 +25,7 @@ View Honeybee models in 3D in your browser using the WebGL and the Three.js Java
 
 _The following links go to the versions as dated_
 
-### [Honeybee Viewer 3D 2020-02-13]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-10/honeybee-viewer-3d.html)
+### [Honeybee Viewer 3D 2020-02-13]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-13/honeybee-viewer-3d.html)
 
 * F: Add listing and opening Dragonfly Schema sample files in GitHub repo
 * F: Begins to add second and new algorithm for identifying items of interest
