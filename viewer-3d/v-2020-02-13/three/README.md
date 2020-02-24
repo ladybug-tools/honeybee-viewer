@@ -36,6 +36,11 @@ _<small>ZZZZZ</small>_
 
 ## Links of Interest
 
+Zoom to fit
+
+* https://discourse.threejs.org/t/camera-zoom-to-fit-object/936/23
+* https://github.com/mrdoob/three.js/pull/14526
+
 
 ## Change Log
 

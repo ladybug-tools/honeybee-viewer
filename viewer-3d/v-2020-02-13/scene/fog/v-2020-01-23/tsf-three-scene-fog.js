@@ -46,7 +46,7 @@ TSF.getMenu = function () {
 	<p>
 		<label title="Can you see me now!" >
 			<input type=checkbox onchange=TSF.toggleFog() checked > fog
-		</label> 
+		</label>
 	</p>
 
 	<div id=TSFdivMessage ></div>
