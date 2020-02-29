@@ -18,7 +18,7 @@ _<small>Honeybee Viewer 3D</small>_
 
 ## Concept
 
-View Honeybee models in 3D in your browser using the WebGL and the Three.js JavaScript library
+View Honeybee Schema models in 3D in your browser using the WebGL and the Three.js JavaScript library
 
 
 ## Honeybee Viewer 3D
@@ -78,6 +78,7 @@ _The following links go to the version as dated_
 	* F: 'Zoom all' beginning to work
 
 ### [Sample File Viewer 3d 2020-01-10-00]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-10-00/sample-file-viewer-3d.html )
+
 * style-2020-01-10.js
 	* B: Views better on very very small devices
 	* B: Handles OS darkmode
@@ -96,6 +97,7 @@ _The following links go to the version as dated_
 	* Face buttons turned on at load time
 
 ### [Sample File Viewer 3d 2020-01-09-00]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-09-00/sample-file-viewer-3d.html )
+
 * R: now built around GFL anf JTV modules
 * phj-parse-honeybee-json-2020-01-07
 	* Now passes jsHint
@@ -104,6 +106,7 @@ _The following links go to the version as dated_
 ### [Sample File Viewer 3d 2020-01-08-00]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-08-00/sample-file-viewer-3d.html )
 
 ### [Sample File Viewer 3d 2020-01-07-00]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-07-00/sample-file-viewer-3d.html )
+
 * Add JSON tree view to menu
 * Add faces have color
 * Add lights, shade and shadow
@@ -112,6 +115,7 @@ _The following links go to the version as dated_
 * General refactor and cleanup
 
 ### [Sample File Viewer 3d 2020-01-05-02]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-05-02/sample-file-viewer-3d.html )
+
 	* Begins to add a tree view of the JSON
 
 ### [Sample File Viewer 3d 2020-01-05-01]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-01-05-01/sample-file-viewer-3d.html ) <br><img src="https://www.ladybug.tools/honeybee-viewer/images/sample-file-viewer-3d-2020-01-05-01.png" width=240>
@@ -123,6 +127,10 @@ _The following links go to the version as dated_
 
 
 ## Issues
+
+2020-02-29 ~ Theo/Michal ~ Some faces with opening are drawn incorrectly. Current code assumes faces are drawn counter-clockwise and openings _vice-versa_. This is not true always.
+2020-02-29 ~ Theo/Michal ~ Outlines of previously loaded models are not being erased.
+2020-02-29 ~ Theo ~ JSON files inside ZIP files are not opened
 
 
 ## Things you can do using this script
