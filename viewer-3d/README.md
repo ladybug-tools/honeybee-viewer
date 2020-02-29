@@ -157,9 +157,9 @@ The new search algorithm is a way of helping me identify geometry elements I do 
 
 ## Issues
 
-2020-02-29 ~ Theo/Michal ~ Some faces with opening are drawn incorrectly. Current code assumes faces are drawn counter-clockwise and openings _vice-versa_. This is not true always.
-2020-02-29 ~ Theo/Michal ~ Outlines of previously loaded models are not being erased.
-2020-02-29 ~ Theo ~ JSON files inside ZIP files are not opened
+* 2020-02-29 ~ Theo/Michal ~ Some faces with opening are drawn incorrectly. Current code assumes faces are drawn counter-clockwise and openings _vice-versa_. This is not true always.
+* 2020-02-29 ~ Theo/Michal ~ Outlines of previously loaded models are not being erased.
+* 2020-02-29 ~ Theo ~ JSON files inside ZIP files are not opened
 
 
 ## Things you can do using this script
