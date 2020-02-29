@@ -26,7 +26,7 @@ FRJ.getMenu = function () {
 	<summary>
 		Open a file on your computer
 
-		<span class="couponcode">??? <span class="coupontooltip">
+		<span class="couponcode">?? <span class="coupontooltip">
 			<a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" target="_blank">file reader on mdn</a>
 			aaa bbb cccc
 		</span></span>
@@ -70,7 +70,7 @@ FRJ.openFile = function ( files ) {
 		//window.addEventListener( "onloadjson", FRJ.onLoad, false )
 
 		FRJ.onLoad();
-		
+
 		window.dispatchEvent( FRJ.event );
 
 

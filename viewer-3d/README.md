@@ -23,7 +23,31 @@ View Honeybee Schema models in 3D in your browser using the WebGL and the Three.
 
 ## Honeybee Viewer 3D
 
-_The following links go to the version as dated_
+_The following links go to the versions as dated_
+
+### [Honeybee Viewer 3D 2020-02-13]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-13/honeybee-viewer-3d.html)
+
+* F: Add listing and opening Dragonfly Schema sample files in GitHub repo
+* F: Begins to add second and new algorithm for identifying items of interest
+	* Based on String.match() as opposed to JSON.parse();
+	* Both searching and parsing algorithms appear to work well together and have no conflicts
+	* Output may be identified as the black lines around faces
+* F: Begins to add reading ```floor_boundary``` elements and displaying these in the 3D model view
+
+The new search algorithm is a way of helping me identify geometry elements I do not yet know about and/or have not yet built a parser that creates a face-filling shape.
+
+
+
+### [Honeybee Viewer 3D 2020-02-10]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-10/honeybee-viewer-3d.html)
+
+* F: Click any face to view its properties in the JSON Tree View card in the left menu
+* F: Mouse over any face to see minimal details appear at screen top right JSON Tree View card in the left menu
+* F: Text input search: type in text to search for key or properties to be displayed in
+* C: Update help text and titles throughout
+* F: Make JSON Tree finder work as expected
+	* Enter text to search for
+	* Click buttons in results
+	* View item in tree view highlighted in green and scrolled into view
 
 
 ### [Honeybee Viewer 3D 2020-02-03]( https://www.ladybug.tools/honeybee-viewer/viewer-3d/v-2020-02-03/honeybee-viewer-3d.html)
@@ -125,6 +149,11 @@ _The following links go to the version as dated_
 
 ## To Do / Wish List
 
+* 2020-02-12 ~ Theo ~ Add boundary display as lines function
+* 2020-02-12 ~ Theo ~ Add unique floors
+* 2020-02-12 ~ Theo ~ boundary_floor
+* 2020-02-12 ~ Theo ~ Add context shade
+
 
 ## Issues
 
@@ -144,10 +173,11 @@ _The following links go to the version as dated_
 
 ## Links of Interest
 
+* http://techslides.com/how-to-parse-and-search-json-in-javascript
 
 ## Change Log
 
-Itemd here relate to the readme and other non-script matters
+Items here relate to the readme and other non-script matters
 
 ### 2020-01-16 ~ Theo
 
