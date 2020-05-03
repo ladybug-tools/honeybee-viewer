@@ -87,6 +87,19 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 		<input type="range" id="inpSpeed" onclick="sceneRotation=0.05 * this.value;outSpeed.innerHTML=this.value;" />
 	</p>
 
+
+	<p title="View the frames per second and memory used by this page"></p>
+	<a
+		href="javascript:( () => { const script=document.head.appendChild( document.createElement('script') ); script.onload=() => {const stats=new Stats();document.body.appendChild(stats.dom); requestAnimationFrame( function loop(){ stats.update(); requestAnimationFrame(loop) } ); } ; script.src='https://raw.githack.com/mrdoob/stats.js/master/build/stats.min.js'; })()">load
+		stats.js</a>
+</p>
+
+<p
+	title="View the number of objects that need rendering and the total number of triangles used to create the objects">
+	<button onclick="getRendererInfo()">getRendererInfo</button>
+</p>
+
+<div id="divInfo" class="navText"></div>
 	<div id="divLog"></div>
 
 </nav>
@@ -155,7 +168,9 @@ function init() {
 	zoomObjectBoundingSphere();
 
 
+
 }
+
 
 
 
