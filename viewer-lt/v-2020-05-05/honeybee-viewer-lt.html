@@ -215,7 +215,7 @@ function init() {
 
 	window.parent.addEventListener( "hashchange", onHashChange )
 
-	location.hash = files[ 1 ];
+	location.hash = location.hash ? location.hash : files[ 1 ];
 
 	onHashChange()
 
