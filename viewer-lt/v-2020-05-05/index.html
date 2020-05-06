@@ -5,9 +5,9 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "Basic TooToo HTML template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<!-- <meta name=version content="2020-05-05">-->
+<meta name=version content="2020-05-05">
 
-<title></title>
+<title>Honeybee Viewer</title>
 
 <style>
 
@@ -16,7 +16,7 @@
 
 * { box-sizing: border-box; }
 
-:root { font: 100% monospace; --mnu-width: 25rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
+:root { font: 100% monospace; --mnu-width: 27rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
 
 html { margin: 0; padding: 0; }
 
@@ -44,13 +44,7 @@ input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; background
 
 summary { cursor: pointer; font-size: 2.5ch; font-weight: bold; }
 
-.ftrButton {
-	background-color: #eee;
-	border-radius: 5px;
-	font-size: 150%;
-	margin: auto;
-	text-align: right;
-}
+.ftrButton { background-color: #eee; border-radius: 5px; font-size: 150%; margin: auto; }
 
 .info { float: right }
 
@@ -94,17 +88,22 @@ main { border: 1px solid red; height: 100vh; left: var( --mnu-width ); margin: 0
 
 	</header>
     <p>
-		<button onclick="ifr.contentWindow.location.hash='My_Mother_In_Laws_House.json'" >
+		<button onclick="ifr.contentWindow.getFile( 0 )" >
 		  My_Mother_In_Laws_House.json
 		</button>
-		<button onclick="ifr.contentWindow.location.hash='Lab_Complex.json'" >
+	</p>
+	<p>
+
+		<button onclick="ifr.contentWindow.getFile( 1 )" >
 		  Lab_Complex.json
 		</button>
-		<button onclick="ifr.contentWindow.location.hash='Urban_Model_Honeybee.json'" >
-		  Urban_Model_Honeybee
-		</button>
-	  </p>
 	<p>
+	<button onclick="ifr.contentWindow.getFile( 3 )" >
+		Urban_Model_Honeybee
+	</button>
+	</p>
+
+	<!-- <p>
 		<button id=but onclick=setIt(); >set it</button>
 	</p>
 	<p>
@@ -112,9 +111,20 @@ main { border: 1px solid red; height: 100vh; left: var( --mnu-width ); margin: 0
 	</p>
 	<p>
 		<output id=out >50</output><input type=range id="rng" oninput=out.value=this.value >
-	</p>
+	</p> -->
 
-	<div id=divNavContent ></div>
+	<div id=divNavFiles ></div>
+
+
+	<footer style=position:relative >
+
+		<hr>
+
+		<center title="go to top of menu" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; >❦</a>
+		</center>
+
+	</footer>
+
 </nav>
 
 <main>
@@ -136,20 +146,15 @@ main { border: 1px solid red; height: 100vh; left: var( --mnu-width ); margin: 0
 
 </main>
 
-<footer style=position:relative >
-
-	<hr>
-
-	<center title="go to top of menu" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; >❦</a>
-	</center>
-
-</footer>
 
 <script>
 
 aSource.href = "https://github.com/zzzzz/xxxxx.html";
 
-spnIcon.innerHTML = `<svg height="18" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="18" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>`;
+
+githubMark = `<svg height="12" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="12" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>`;
+spnIcon.innerHTML = githubMark;
+
 sTitle.innerHTML= document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
 const version = document.head.querySelector( "[ name=version ]" );
 sVersion.innerHTML = version ? version.content : "";
@@ -162,16 +167,70 @@ function init() {
 
 	txt = "<h3>Title</h3><p>lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>";
 
-	divContent.innerHTML += `${ ( new Date ) } ${ txt + txt + txt + txt + txt + txt + txt + txt + txt + txt }`;
+	//divContent.innerHTML += `${ ( new Date ) } ${ txt + txt + txt + txt + txt + txt + txt + txt + txt + txt }`;
 
-	divNavContent.innerHTML = txt + txt + txt + txt;
+	getFilesHoneybeeSchemaSamples();
+
 
 }
 
 
-function setIt() {
+function getFilesHoneybeeSchemaSamples() {
 
-	divContent.innerHTML += `<p>${ ( performance.now() ) } - Howdy! </p>`;
+
+	const urlApiHoneybeeSchema = "https://api.github.com/repos/ladybug-tools/honeybee-schema/git/trees/master?recursive=1"
+
+	requestFile( urlApiHoneybeeSchema, onLoadHoneybeeSchema );
+
+}
+
+
+
+function onLoadHoneybeeSchema( response ) {
+
+	const json = JSON.parse( response );
+	//console.log( "json", json );
+
+	let files = json.tree
+		.filter( file => file.type === "blob" )
+		.map( file => file.path )
+		.filter( file => file.includes( "samples/model" ) && ! file.includes( "dev" )  )
+		//.filter( file => ! file.includes( "index" ) && ! file.includes( "readme" ) )
+		.map( file => file.slice( file.indexOf( "/" ) + 1 ) );
+
+	//console.log( 'files', files );
+
+	const folders = [];
+
+	const htm = files.map ( ( path, index )  => {
+
+		const strings = path.split( "/" )
+		const folder = strings[ 0 ];
+
+		let str = "";
+
+		if ( ! folders.includes( folder ) ) {
+
+			folders.push( folder );
+			str = `<h4 style=margin-bottom:0; >${ folder }</h4>`;
+
+		}
+
+		return `
+		${ str }
+		<div>${ index }
+
+			<a href="https://github.com/ladybug-tools/honeybee-schema/blob/master/samples/${ path }" >
+				${ githubMark }
+			<a href="#${ path }" >${ strings.pop() }</a>
+			<a href="https://www.ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-05/#samples/${ path }" target="_blank">
+				<img src=../../images/Icon_External_Link.png></a>
+
+		</div>`
+
+	} ).join( "" );
+
+	divNavFiles.innerHTML = htm;
 
 }
 
@@ -188,42 +247,4 @@ function requestFile( url, callback ) {
 }
 </script>
 </body>
-</html>
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Hello!</title>
-    <meta charset="utf-8">
-    <style>
-
-/* Copyright 2020 Theo Armour. MIT License */
-
-
-* { box-sizing: border-box; }
-
-:root { font: 100% monospace; --mnu-width: 25rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
-
-html { height: 100%; }
-
-body { margin: 0 auto; max-width: 80ch; padding: 0 0.5rem; }
-
-a { color: crimson; text-decoration: none; }
-a:hover, a:focus, a:active { background-color: yellow; color: #aaa; text-decoration: underline; }
-
-button { background-color: #ddd; border: none; border-radius: 2px; color: #322;cursor: pointer; padding: 3px 5px; }
-button:hover { background: #ccc; color: #fff }
-
-    </style>
-  </head>
-
-  <body>
-
-
-
-
-  </body>
 </html>
