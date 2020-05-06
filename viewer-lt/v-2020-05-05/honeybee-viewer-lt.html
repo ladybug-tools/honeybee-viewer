@@ -33,11 +33,11 @@ input[ type=range ]::-moz-range-thumb { background-color: #888; border-radius: 2
 input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background-color: #888; height: 18px; width: 10px; }
 
 .ftrButton {
-			background-color: #eee;
-			border-radius: 5px;
-			font-size: 200%;
-			margin: auto;
-		}
+	background-color: #eee;
+	border-radius: 5px;
+	font-size: 150%;
+	margin: auto;
+}
 
 .info { float: right }
 
@@ -49,6 +49,8 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 
 
 #navMenu { margin: 0 20px; max-width: 15rem; position: absolute; }
+
+  .navText { position: absolute; right: 0;}
 
 </style>
 
@@ -111,12 +113,12 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 
 </nav> -->
 
-<div id="divInfo" class="navText"></div>
 
+  <div id="divInfo" class="navText"></div>
 
 <footer  >
 
-	<span style="bottom:1ch;position:fixed;display:inline;left: calc(50vw - 16ch);border: 0px solid red;" >
+	<span style="bottom:1ch;position:fixed;display:inline;left: calc(50vw - 10ch);border: 0px solid red;" >
 		<button onclick=controls.reset();zoomObjectBoundingSphere(group); class=ftrButton title="reset the view">&CirclePlus;</button>
 		&nbsp;
 		<button onclick="controls.autoRotate=!controls.autoRotate" title="toggle the rotation"
@@ -126,7 +128,11 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 		class=ftrButton>&sdotb;</button>
 		&nbsp; -->
 		<button onclick=setStats(); title="See the rendering statistics" class=ftrButton>fps</button>
+
+
+
 	</span>
+
 
 </footer>
 
@@ -172,19 +178,19 @@ function init() {
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
 	//controls.minDistance = 40;
 	//controls.maxDistance = 500;
-	//controls.autoRotate = true;
+	controls.autoRotate = true;
 	controls.enableDamping = true;
-	controls.dampingFactor = 0.05;
+	controls.dampingFactor = 0.09;
 	//controls.enablePan = false;
-	controls.autoRotateSpeed = 5;
+	controls.autoRotateSpeed = 2;
 
 	//controls.maxPolarAngle = Math.PI * 0.5;
 
 
 	window.addEventListener( 'resize', onWindowResize, false );
 	window.addEventListener( 'orientationchange', onWindowResize, false );
-	window.addEventListener( 'keyup', () => sceneRotation = 0, false );
-	renderer.domElement.addEventListener( 'click', () => sceneRotation = 0, false );
+	window.parent.addEventListener( 'keyup', () => controls.autoRotate = false, false );
+	renderer.domElement.addEventListener( 'click', () => controls.autoRotate = false, false );
 
 	addLights();
 
@@ -207,7 +213,7 @@ function init() {
 
 	window.addEventListener( "hashchange", onHashChange )
 
-	location.hash = files[ 3 ];
+	location.hash = files[ 1 ];
 
 	onHashChange()
 
@@ -315,7 +321,7 @@ function zoomObjectBoundingSphere( obj = group ) {
 
 	//camera.zoom = distance / (  * radius ) ;
 
-	camera.position.copy( center.clone().add( new THREE.Vector3( -2 * radius, 2 * radius, 1.0 * radius ) ) );
+	camera.position.copy( center.clone().add( new THREE.Vector3( -1.5 * radius, 1.5 * radius, 0.5 * radius ) ) );
 	camera.near = 0.001 * radius; //2 * camera.position.length();
 	camera.far = 50 * radius; //2 * camera.position.length();
 	camera.updateProjectionMatrix();
