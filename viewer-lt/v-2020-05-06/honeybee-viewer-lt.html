@@ -200,14 +200,19 @@ function onLoadJson( string ) {
 	const json = JSON.parse( string );
 	console.log( "json", json );
 
+	scene.remove( group, PBL.lines );
+
 	if ( json.buildings ) {
 
 		response = string;
 
 		PBL.processJson()
 
+	} else {
+
+		PHJ.processJson( json );
+
 	}
-//PHJ.processJson( json );
 
 }
 
@@ -364,7 +369,7 @@ function onWindowResize() {
 
 	renderer.setSize( window.innerWidth, window.innerHeight );
 
-	controls.handleResize();
+	//controls.handleResize();
 
 	//console.log( 'onWindowResize  window.innerWidth', window.innerWidth );
 

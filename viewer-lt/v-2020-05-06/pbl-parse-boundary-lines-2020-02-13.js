@@ -64,7 +64,7 @@ PBL.parseBoundary = function () {
 	if ( matches ) {
 
 		matches = matches.map( item => JSON.parse( item.slice( 11, -1 ) ) );
-		console.log( 'matches', matches );
+		//console.log( 'matches', matches );
 
 		const verticesArr = matches.map( arr => arr.map( points => v( points ) ) );
 		verticesArr.forEach( arr => arr.push( arr[ 0 ] ) );
@@ -119,12 +119,12 @@ PBL.parseBoundaryFloor = function () {
 		//console.log( 'heights', heights );
 
 		points = points.map( item => JSON.parse( item ) );
-		console.log( 'points', points );
+		//console.log( 'points', points );
 
 		const verticesArr = points.map( ( points, i ) => points.map( point => new THREE.Vector3( point[ 0 ], point[ 1 ], heights[ i ] ) ) );
 
 		verticesArr.forEach( arr => arr.push( arr[ 0 ] ) );
-		console.log( 'verticesArr', verticesArr );
+		//console.log( 'verticesArr', verticesArr );
 
 		for ( let vertices of verticesArr ) {
 
