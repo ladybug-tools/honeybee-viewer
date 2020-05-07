@@ -40,17 +40,15 @@ PBL.getMenu = function () {
 
 PBL.processJson = function () {
 
-	THR.scene.remove( PBL.lines );
+	scene.remove( PBL.lines );
 
 	PBL.lines = new THREE.Group();
 
-	THR.scene.add( PBL.lines );
-
+	scene.add( PBL.lines );
 
 	PBL.parseBoundary();
 
-	PBL.parseBoundaryFloor();
-	
+	PBL.parseBoundaryFloor()
 };
 
 
@@ -58,7 +56,7 @@ PBL.parseBoundary = function () {
 
 	const v = arr => new THREE.Vector3().fromArray( arr );
 
-	let matches = GFO.response.match( /"boundary"([^]*?)\}/gm );
+	let matches = response.match( /"boundary"([^]*?)\}/gm );
 
 	//matches = matches.map( item => item.replace( /\r\n|\r|\n/g, "" ) );
 	//matches = matches.map( item => item.replace( / /g, "" ) );
@@ -66,7 +64,7 @@ PBL.parseBoundary = function () {
 	if ( matches ) {
 
 		matches = matches.map( item => JSON.parse( item.slice( 11, -1 ) ) );
-		//console.log( 'matches', matches );
+		console.log( 'matches', matches );
 
 		const verticesArr = matches.map( arr => arr.map( points => v( points ) ) );
 		verticesArr.forEach( arr => arr.push( arr[ 0 ] ) );
@@ -105,7 +103,7 @@ Boundary lines: 0
 PBL.parseBoundaryFloor = function () {
 
 
-	let matches = GFO.response.match( /"floor_boundary"([^]*?)\}/gm );
+	matches = response.match( /"floor_boundary"([^]*?)\}/gm );
 
 	if ( matches ) {
 
@@ -116,16 +114,17 @@ PBL.parseBoundaryFloor = function () {
 		let points = matches.map( item => item.slice( 17, 2 + item.indexOf( "]]" ) ) );
 		//console.log( 'matches boundary floor ', matches );
 
-		const heights = matches.map( item => item.match( /"floor_height":(.*?),/ )[ 1 ] );
+		const heightsArr = matches.map( item => item.match( /"floor_to_ceiling_height":(.*?),/ ) );
+		heights = heightsArr.map( heightArr => heightArr ? heightArr[ 1 ] : 0 );
 		//console.log( 'heights', heights );
 
 		points = points.map( item => JSON.parse( item ) );
-		//console.log( 'points', points );
+		console.log( 'points', points );
 
 		const verticesArr = points.map( ( points, i ) => points.map( point => new THREE.Vector3( point[ 0 ], point[ 1 ], heights[ i ] ) ) );
 
 		verticesArr.forEach( arr => arr.push( arr[ 0 ] ) );
-		//console.log( 'verticesClosed', verticesClosed );
+		console.log( 'verticesArr', verticesArr );
 
 		for ( let vertices of verticesArr ) {
 
@@ -153,5 +152,7 @@ Boundary floor lines: 0
 	}
 
 };
+
+
 
 PBL.init();
