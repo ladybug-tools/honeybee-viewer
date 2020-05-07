@@ -7,7 +7,7 @@
 <meta name=description
 	content="Real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library">
 <meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
-<meta name=version content="2020-05-03">
+<meta name=version content="2020-05-05">
 
 
 <title></title>
@@ -50,7 +50,7 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 
 #navMenu { margin: 0 20px; max-width: 15rem; position: absolute; }
 
-  .navText { position: absolute; right: 0;}
+.navText { position: absolute; right: 0;}
 
 </style>
 
@@ -81,9 +81,6 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 
 	</header>
 
-	<p>
-		<button onclick="addMeshes()">add meshes</button>
-	</p>
 
 
 	<p>
@@ -119,6 +116,7 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 <footer  >
 
 	<span style="bottom:1ch;position:fixed;display:inline;left: calc(50vw - 10ch);border: 0px solid red;" >
+
 		<button onclick=controls.reset();zoomObjectBoundingSphere(group); class=ftrButton title="reset the view">&CirclePlus;</button>
 		&nbsp;
 		<button onclick="controls.autoRotate=!controls.autoRotate" title="toggle the rotation"
@@ -128,8 +126,6 @@ input[ type=range ]::-webkit-slider-thumb { -webkit-appearance: none; background
 		class=ftrButton>&sdotb;</button>
 		&nbsp; -->
 		<button onclick=setStats(); title="See the rendering statistics" class=ftrButton>fps</button>
-
-
 
 	</span>
 
@@ -201,10 +197,6 @@ function init() {
 
 	addGround();
 
-	// addMesh();
-
-	// zoomObjectBoundingSphere();
-
 	files = [
 
 		"My_Mother_In_Laws_House.json",
@@ -215,9 +207,7 @@ function init() {
 
 	window.parent.addEventListener( "hashchange", onHashChange )
 
-	location.hash = location.hash ? location.hash : files[ 1 ];
-
-	onHashChange()
+	parent.location.hash = parent.location.hash ? parent.location.hash : getFile( 1  )
 
 }
 
@@ -226,9 +216,9 @@ function init() {
 function getFile( index ) {
 
 
-	path = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-viewer@master/sample-files/2020-04-17/";
+	const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-viewer@master/sample-files/2020-04-17/";
 
-	fileName = files[ index ];
+	const fileName = files[ index ];
 
 	requestFile( path + fileName, onLoadJson );
 
@@ -236,9 +226,9 @@ function getFile( index ) {
 
 function onHashChange() {
 
-	path = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-schema@master/samples/";
+	const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-schema@master/samples/";
 
-	fileName = parent.location.hash.slice( 1 );
+	const fileName = parent.location.hash.slice( 1 );
 
 	requestFile( path + fileName, onLoadJson );
 
@@ -248,9 +238,10 @@ function onHashChange() {
 
 function onLoadJson( string ) {
 
-	json = JSON.parse( string );
+	divInfo.innerHTML = "";
 
-	console.log( "json", json );
+	const json = JSON.parse( string );
+	//console.log( "json", json );
 
 	PHJ.processJson( json );
 
@@ -364,38 +355,6 @@ function zoomObjectBoundingSphere( obj = group ) {
 	window.dispatchEvent( event );
 
 };
-
-
-
-function addMesh( size = 20 ) {
-
-	// CylinderGeometry( radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded )
-	// SphereGeometry( radius, segmentsWidth, segmentsHeight, phiStart, phiLength, thetaStart, thetaLength )
-	// TorusGeometry( radius, tube, radialSegments, tubularSegments, arc )
-
-	scene.remove( group );
-	group = new THREE.Group();
-
-	const geometry = new THREE.BoxGeometry( size, size, size );
-
-	geometry.applyMatrix4( new THREE.Matrix4().makeRotationX( -0.5 * Math.PI ) );
-	geometry.applyMatrix4( new THREE.Matrix4().makeScale( 1, 1, 1 ) );
-	geometry.applyMatrix4( new THREE.Matrix4().makeTranslation( 0, 0, 0 ) );
-
-	//const material = new THREE.MeshNormalMaterial();
-	const material = new THREE.MeshPhongMaterial( { color: 0xffffff * Math.random(), specular: 0xffffff } );
-	mesh = new THREE.Mesh( geometry, material );
-	mesh.receiveShadow = true;
-	mesh.castShadow = true;
-	group.add( mesh );
-
-	scene.add( group );
-
-	return mesh;
-
-}
-
-
 
 
 //////////
@@ -549,8 +508,6 @@ PHJ.processJson = function ( json ) {
 
 	zoomObjectBoundingSphere( group );
 
-	//THRV.zoomToFitObject( group );
-
 };
 
 
@@ -622,7 +579,6 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 
 			shape.holes.push( hole.path );
 			vertices = vertices.concat( hole.vertices.reverse() );
-
 			//console.log( 'vertices', vertices );
 
 		} );
@@ -653,7 +609,7 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 
 	mesh.geometry.vertices = vertices;
 
-	line = addLine( vertices )
+	const line = addLine( vertices )
 	mesh.add( line );
 
 	mesh.castShadow = true;
@@ -674,15 +630,11 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 
 function addLine( vertices ) {
 
-	let geometry, material, line;
-	const v = function ( x, y, z ){ return new THREE.Vector3( x, y, z ); };
-
-	geometry = new THREE.Geometry();
+	const geometry = new THREE.Geometry();
 	geometry.vertices = vertices;
-	material = new THREE.LineBasicMaterial( { color: 0x000000 } );
-	line = new THREE.Line( geometry, material );
+	const material = new THREE.LineBasicMaterial( { color: 0x000000 } );
+	const line = new THREE.Line( geometry, material );
 
-//		scene.add( line );
 	return line;
 
 }
@@ -697,7 +649,6 @@ PHJ.getTempVertices = function ( vertices ) {
 	const quaternion = new THREE.Quaternion().setFromUnitVectors( normal, baseNormal );
 
 	const tempVertices = vertices.map( vertex => vertex.clone().applyQuaternion( quaternion ) );
-
 	//console.log( 'tempVertices', tempVertices );
 
 	return tempVertices;
