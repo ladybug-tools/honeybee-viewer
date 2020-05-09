@@ -8,7 +8,9 @@ value="You are now in a GitHub web page view - Click this button to view this re
 # [Honeybee Viewer Read Me]( ./index.html )
 
 
-### Honeybee Viewer LT: https://www.ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-06/
+### Honeybee Viewer LT: https://www.ladybug.tools/honeybee-viewer/viewer-lt/
+
+The Viewer core functionality
 
 ## Honeybee Viewer 3D
 
