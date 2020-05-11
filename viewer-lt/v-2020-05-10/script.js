@@ -112,17 +112,17 @@ function onLoadJson ( string ) {
 
 	scene.remove( group, PBL.lines );
 
-	// if ( string.includes( "room_2ds" ) ) {
+	if ( string.includes( "room_2ds" ) ) {
 
 		response = string;
 
 		PBL.processJson( json );
 
-	//} else {
+	} else {
 
-		//PHJ.processJson( json );
+		PHJ.processJson( json );
 
-	//}
+	}
 
 }
 

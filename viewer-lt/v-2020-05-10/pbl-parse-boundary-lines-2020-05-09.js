@@ -93,7 +93,7 @@ PBL.parseBoundary = function () {
 	const v = arr => new THREE.Vector3().fromArray( arr );
 
 	const boundariesStrings = response.match( /"boundary"([^]*?)\}/gm );
-	//console.log( "boundariesStrings", boundariesStrings );
+	console.log( "boundariesStrings", boundariesStrings );
 
 	if ( boundariesStrings ) {
 
