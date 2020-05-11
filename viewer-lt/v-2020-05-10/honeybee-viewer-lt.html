@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+<meta name=description
+	content="Real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library">
+<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
+<meta name=version content="2020-05-10">
+
+
+<title>Honeybee Viewer LT</title>
+
+<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r116/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r116/examples/js/controls/OrbitControls.js"></script>
+
+<div id="navMenu" >
+
+	<details open>
+
+		<summary>show || hide menu</summary>
+
+		<header id="hdrTitle">
+			<h2>
+
+				<a href="https://glitch.com/~2020-05-08-globe-template" target="_top" title="Source code on Glitch">
+					<img width="18" src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg" >
+				</a>
+
+				<a href="https://github.com/ladybug-tools/honeybee-viewer/tree/master/viewer-lt" target="_top" title="Source code on GitHub">
+					<img src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg?v=1589095846856" >
+				</a>
+
+				<a href="" title="Click to reload this page">
+					Honeybee Viewer LT &nbsp;
+					<span id="sVersion"></span>
+				</a>
+
+				<span class="info">&#x24d8;<span id="divDescription" class="infotooltip" ></span></span>
+
+			</h2>
+
+
+		</header>
+
+		<div id=PBLdivBoundaryStats ></div>
+
+		<div id=PBLdivBoundaryFloorStats ></div>
+
+		<div id=PBLdivParseBoundaryLines > </div>
+
+		<div id="divInfo"></div>
+
+	</details>
+
+
+
+</div>
+
+
+<footer  >
+
+		<button onclick="controls.reset();zoomObjectBoundingSphere(group);" class="ftrButton" title="reset the view">&CirclePlus;</button>
+
+		<button onclick="controls.autoRotate=!controls.autoRotate" title="toggle the rotation"
+		class=ftrButton>&circlearrowright;</button>
+
+		<!-- <button onclick="TXTgroup.visible=! TXTgroup.visible" title="toggle statistics"
+		class=ftrButton>&sdotb;</button>
+		-->
+		<button onclick=setStats(); title="See the rendering statistics" class=ftrButton>fps</button>
+
+</footer>
+
+<script src="pbl-parse-boundary-lines-2020-05-09.js"></script>
+<script src="script.js"></script>
+<script>
+
+
+</script>
+</body>
+</html>
