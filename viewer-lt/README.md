@@ -1,4 +1,4 @@
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/honeybee-viewer/viewer-lt/ "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://ladybug.tools/honeybee-viewer/viewer-lt/ "View file as a web page." ) </span>
 
 <div><input type=button onclick=window.location.href="https://github.com/ladybug-tools/honeybee-viewer/tree/master/viewer-lt";
 value='You are now in a GitHub web page view - Click this button to view this read me file as source code' ></div>
@@ -9,10 +9,10 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 The Honeybee Viewer core functionality
 
-<iframe src= https://www.ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-11/honeybee-viewer-lt.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+<iframe src= https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-11/honeybee-viewer-lt.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _basic-html.html_
 
-### Full Screen: [Honeybee Viewer LT](  https://www.ladybug.tools/honeybee-viewer/viewer-lt/ )
+### Full Screen: [Honeybee Viewer LT]( https://ladybug.tools/honeybee-viewer/viewer-lt/ )
 
 
 <details open >
