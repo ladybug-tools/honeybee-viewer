@@ -188,7 +188,7 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 
 	const shapeGeometry = new THREE.ShapeGeometry( shape );
 
-	
+
 
 	//console.log( 'shapeGeometry', shapeGeometry );
 
@@ -216,7 +216,8 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 
 	//PHJ.vertices.push( vertices );
 	// const line = addLine( vertices );
-	// mesh.add( line );
+	// line.updateMatrixWorld();
+	// scene.add( line );
 
 	mesh.castShadow = true;
 	mesh.receiveShadow = true;

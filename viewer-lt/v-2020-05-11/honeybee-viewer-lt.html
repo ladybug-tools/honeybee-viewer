@@ -162,6 +162,8 @@ function onLoadJson ( response ) {
 
 	scene.add( PHJ.group, PBL.group);
 
+	//PHJ.vertices = [];
+
 	//response = string;
 
 	if ( [ "Model", "Building", "Story", "Room2D", "ContextShade" ].includes( json.type ) ) {
@@ -185,7 +187,7 @@ function onLoadJson ( response ) {
 		// geometry.vertices = PHJ.vertices;
 		// const material = new THREE.LineBasicMaterial( { color: 0x000000 } );
 		// const line = new THREE.LineSegments( geometry, material );
-
+		// line.updateMatrixWorld();
 		// scene.add( line );
 
 		zoomObjectBoundingSphere( PHJ.group );
