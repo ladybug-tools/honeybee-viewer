@@ -164,6 +164,8 @@ function zoomObjectBoundingSphere ( obj = group ) {
 
 	window.dispatchEvent( event );
 
+	console.log( "mszoom ",performance.now() - timeStart );
+
 }
 
 

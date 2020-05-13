@@ -1,6 +1,9 @@
 
 
-var PHJ = {};
+var PHJ = {
+
+
+};
 
 PHJ.processJson = function ( json ) {
 
@@ -18,6 +21,7 @@ PHJ.processJson = function ( json ) {
 	const rooms = json.rooms || [];
 
 	let id = 0;
+	PHJ.vertices = [];
 
 	for ( let room of rooms ) {
 
@@ -63,6 +67,8 @@ PHJ.processJson = function ( json ) {
 
 	//PHJ.parseBoundary();
 
+
+
 };
 
 
@@ -73,7 +79,7 @@ PHJ.parseApertureShades = function ( apertures ) {
 		PHJ.parseShades( aperture.outdoor_shades || [] );
 
 	}
-	
+
 };
 
 
@@ -182,6 +188,8 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 
 	const shapeGeometry = new THREE.ShapeGeometry( shape );
 
+	
+
 	//console.log( 'shapeGeometry', shapeGeometry );
 
 	//const material = new THREE.MeshNormalMaterial( { opacity: 0.7, side: THREE.DoubleSide, transparent: true, wireframe: false } );
@@ -190,24 +198,25 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 	const mesh = new THREE.Mesh( shapeGeometry, material );
 
 	// needed when you want textures to fit the mesh nicely
-	const box = new THREE.Box3().setFromObject( mesh );
-	const size = new THREE.Vector3();
-	box.getSize( size );
+	// const box = new THREE.Box3().setFromObject( mesh );
+	// const size = new THREE.Vector3();
+	// box.getSize( size );
 
-	mesh.geometry.faceVertexUvs[ 0 ].forEach( fvUvs => {
+	// mesh.geometry.faceVertexUvs[ 0 ].forEach( fvUvs => {
 
-		fvUvs.forEach( fvUv => {
+	// 	fvUvs.forEach( fvUv => {
 
-			fvUv.x = ( fvUv.x - box.min.x ) / size.x; fvUv.y = 1 - ( fvUv.y - box.min.y ) / size.y;
+	// 		fvUv.x = ( fvUv.x - box.min.x ) / size.x; fvUv.y = 1 - ( fvUv.y - box.min.y ) / size.y;
 
-		} );
+	// 	} );
 
-	} );
+	// } );
 
 	mesh.geometry.vertices = vertices;
 
-	const line = addLine( vertices );
-	mesh.add( line );
+	//PHJ.vertices.push( vertices );
+	// const line = addLine( vertices );
+	// mesh.add( line );
 
 	mesh.castShadow = true;
 	mesh.receiveShadow = true;

@@ -51,7 +51,6 @@
 	border: 0px solid red;
 	bottom: 1ch;
 	position: fixed;
-	display: td;
 	left: 0;
 	margin: 0 auto;
 	right: 0;
@@ -61,7 +60,7 @@
 
   input[type="range"]::-moz-range-thumb {
 	background-color: #888;
-	border-radius: 2;
+	border-radius: 2px;
 	width: 10px;
   }
 
@@ -112,7 +111,7 @@
 	border: 0px solid red;
 	margin: 0 20px;
 	max-height: 100vh;
-	max-width: 66rem;
+	max-width: 50rem;
 	overflow: auto;
 	position: absolute;
   }
