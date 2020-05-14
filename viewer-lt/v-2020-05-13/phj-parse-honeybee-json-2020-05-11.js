@@ -22,6 +22,9 @@ PHJ.processJson = function ( json ) {
 
 	let id = 0;
 	PHJ.vertices = [];
+	PHJ.geometryShade = new THREE.Geometry();
+
+	PHJ.geometryFaces = new THREE.Geometry();
 
 	for ( let room of rooms ) {
 
@@ -43,13 +46,7 @@ PHJ.processJson = function ( json ) {
 
 			const holes = PHJ.parseApertures( openings, vertices );
 
-			const color = colors[ face.face_type ];
-
-			const shape = PHJ.addShape3d( vertices, holes, color );
-			shape.name = face.display_name;
-			shape.userData.id = id ++;
-
-			PHJ.group.add( shape );
+			PHJ.addShape3d( vertices, holes );
 
 			PHJ.parseShades( face.indoor_shades || [] );
 
@@ -151,25 +148,32 @@ PHJ.parseShades = function ( shades ) {
 
 	//console.log( "shades", shades );
 
+
+
 	for ( let shade of shades ) {
 
 		const boundary = shade.geometry.boundary;
 
 		const vertices = boundary.map( point => new THREE.Vector3().fromArray( point ) );
 
-		const shape = PHJ.addShape3d( vertices, [], "darkgray" );
+		const tempVertices = PHJ.getTempVertices( vertices );
+		const shape = new THREE.Shape( tempVertices );
+		const shapeGeometry = new THREE.ShapeGeometry( shape );
 
-		shape.name = shade.type;
+		shapeGeometry.vertices = vertices;
+		PHJ.geometryShade.merge( shapeGeometry );
 
-		PHJ.group.add( shape );
+		PHJ.vertices.push( vertices );
 
 	}
+
+
 
 };
 
 
 
-PHJ.addShape3d = function ( vertices, holes, color ) {
+PHJ.addShape3d = function ( vertices, holes ) {
 
 	const tempVertices = PHJ.getTempVertices( vertices );
 	const shape = new THREE.Shape( tempVertices );
@@ -187,49 +191,12 @@ PHJ.addShape3d = function ( vertices, holes, color ) {
 	}
 
 	const shapeGeometry = new THREE.ShapeGeometry( shape );
-
-
-
+	shapeGeometry.vertices = vertices;
 	//console.log( 'shapeGeometry', shapeGeometry );
 
-	//const material = new THREE.MeshNormalMaterial( { opacity: 0.7, side: THREE.DoubleSide, transparent: true, wireframe: false } );
-	const material = new THREE.MeshPhongMaterial( { color: color, opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false } );
+	PHJ.geometryFaces.merge( shapeGeometry );
 
-	const mesh = new THREE.Mesh( shapeGeometry, material );
-
-	// needed when you want textures to fit the mesh nicely
-	// const box = new THREE.Box3().setFromObject( mesh );
-	// const size = new THREE.Vector3();
-	// box.getSize( size );
-
-	// mesh.geometry.faceVertexUvs[ 0 ].forEach( fvUvs => {
-
-	// 	fvUvs.forEach( fvUv => {
-
-	// 		fvUv.x = ( fvUv.x - box.min.x ) / size.x; fvUv.y = 1 - ( fvUv.y - box.min.y ) / size.y;
-
-	// 	} );
-
-	// } );
-
-	mesh.geometry.vertices = vertices;
-
-	//PHJ.vertices.push( vertices );
-	const line = addLine( vertices );
-	scene.add( line );
-
-	mesh.castShadow = true;
-	mesh.receiveShadow = true;
-
-	mesh.geometry.computeVertexNormals();
-	mesh.geometry.computeFaceNormals();
-	mesh.geometry.computeBoundingBox();
-	//mesh.geometry.computeBoundingSphere();
-	mesh.updateMatrixWorld();
-
-	//scene.add( mesh );
-
-	return mesh;
+	PHJ.vertices.push( vertices );
 
 };
 
@@ -241,6 +208,7 @@ function addLine ( vertices ) {
 	geometry.vertices = vertices;
 	const material = new THREE.LineBasicMaterial( { color: 0x000000 } );
 	const line = new THREE.Line( geometry, material );
+	//line.updateMatrixWorld();
 
 	return line;
 
