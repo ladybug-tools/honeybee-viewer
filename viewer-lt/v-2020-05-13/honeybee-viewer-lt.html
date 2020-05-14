@@ -7,7 +7,7 @@
 <meta name=description
 	content="Real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library">
 <meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
-<meta name=version content="2020-05-11">
+<meta name=version content="2020-05-13">
 
 
 <title>Honeybee Viewer LT</title>
@@ -186,7 +186,7 @@ function onLoadJson ( response ) {
 		geometryLine.vertices = PHJ.vertices.flatMap( vertex => vertex );
 		const materialLine = new THREE.LineBasicMaterial( { color: 0x000000 } );
 		const line = new THREE.LineSegments( geometryLine, materialLine );
-		scene.add( line );
+		PHJ.group.add( line );
 
 
 		const materialShades = new THREE.MeshPhongMaterial( { color: "darkgray", opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false } );
@@ -210,7 +210,7 @@ function onLoadJson ( response ) {
 		const material= new THREE.MeshPhongMaterial( { color: "beige", opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false } );
 
 		const mesh = new THREE.Mesh( PHJ.geometryFaces, material );
-		
+
 		mesh.castShadow = true;
 		mesh.receiveShadow = true;
 
