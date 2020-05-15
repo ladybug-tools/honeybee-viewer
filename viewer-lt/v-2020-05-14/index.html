@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+<meta charset = "utf-8" >
+<meta name = "viewport" content= "width=device-width, initial-scale=1" >
+<meta name = "description" content = "View Honeybee and Dragonfly Schema files in 3D" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+
+<title>Honeybee Viewer</title>
+
+<link rel="stylesheet" href="./style.css">
+
+<style>
+
+/* Copyright 2020 Theo Armour. MIT License */
+
+
+* { box-sizing: border-box; }
+
+:root { font: 100% monospace; --mnu-width: 25rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
+
+#navMenu:hover {
+	overflow: auto;
+}
+
+main { border: 1px solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
+	overflow: auto; padding: 0 1rem; position: absolute; width: calc( 100% - var( --mnu-width ) );  }
+
+#navMenu { background-color: #eee; max-height: 100vh; left: 0; margin: 0; overflow: auto; padding: 0 1rem;
+	position: absolute; top: 0; width: var( --mnu-width ); }
+
+
+</style>
+</head>
+<body>
+
+<nav id="navMenu" >
+
+	<header id="hdrTitle" >
+
+		<h2 style=vertical-align:middle; >
+
+			<a href="https://glitch.com/~honeybee-viewer-lt-2020-05" target="_top" title="Source code on Glitch">
+				<img width="18" src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg" >
+			</a>
+
+			<a href="https://github.com/ladybug-tools/honeybee-viewer/tree/master/viewer-lt" target=_top title="Source code on GitHub" >
+				<img src=https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg >
+			</a>
+
+			<a href="" title="Click to reload this page" >
+				Honeybee Viewer 2020-05-13
+			</a>
+			&nbsp;
+			<span class="info" >&#x24d8;<span id=divDescription class="infotooltip" >
+				View Honeybee and Dragonfly Schema files in 3D
+			</span></span>
+
+		</h2>
+
+	</header>
+
+	<p>
+		<button onclick="ifr.contentWindow.getFile( 0 )" >
+		  My_Mother_In_Laws_House.json
+		</button>
+	</p>
+	<p>
+		<button onclick="ifr.contentWindow.getFile( 1 )" >
+		  Lab_Complex.json
+		</button>
+	</p>
+	<p>
+		<button onclick="ifr.contentWindow.getFile( 2 )" >
+			Urban_Model_Dragonfly
+		</button>
+	</p>
+	<p>
+	<button onclick="ifr.contentWindow.getFile( 3 )" >
+		Urban_Model_Honeybee
+	</button>
+	</p>
+
+	<!-- <p>
+		<button id=but onclick=setIt(); >set it</button>
+	</p>
+	<p>
+		<label><input type=checkbox > checkbox</label>
+	</p>
+	<p>
+		<output id=out >50</output><input type=range id="rng" oninput=out.value=this.value >
+	</p> -->
+
+	<div id=divNavFilesHoneybee ></div>
+
+	<div id=divNavFilesDragonfly ></div>
+
+	<div>
+
+		<br>
+		<hr>
+		<p>
+			<center title="go to top of menu" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; >
+			<img src=../../images/spider.ico width=16 ></a>
+			</center>
+		</p>
+
+	</div>
+
+</nav>
+
+<main>
+
+
+	<div class="glitch-embed-wrap" style="height: 80vh; overflow: hidden; width: 100%; resize: both; ">
+
+		<iframe id="ifr"
+		src="honeybee-viewer-lt.html"
+		title="honeybee-viewer-lt-2020-05-03 on Glitch"
+		style="height: 100%; width: 100%; border: 0;">
+		</iframe>
+
+
+	</div>
+
+	<p>Sample files are displayed in a resizable iframe
+
+	<span style=float:right; >
+
+		<button class=ftrButton onclick=openInNewTab() ><img width=32 src=../../images/icon-external-link.svg></button>
+	</span>
+
+	</p>
+</main>
+
+
+<script>
+
+init();
+
+function init() {
+
+	getFilesHoneybeeSchemaSamples();
+
+	getFilesDragonflySchemaSamples();
+
+}
+
+
+
+function getFilesHoneybeeSchemaSamples() {
+
+	const urlApiHoneybeeSchema = "https://api.github.com/repos/ladybug-tools/honeybee-schema/git/trees/master?recursive=1"
+
+	requestFile( urlApiHoneybeeSchema, onLoadHoneybeeSchema );
+
+}
+
+
+
+function onLoadHoneybeeSchema( response ) {
+
+	const json = JSON.parse( response );
+	//console.log( "json", json );
+
+	let files = json.tree
+		.filter( file => file.type === "blob" )
+		.map( file => file.path )
+		.filter( file => file.includes( "samples/model" ) && ! file.includes( "dev" )  )
+		//.filter( file => ! file.includes( "index" ) && ! file.includes( "readme" ) )
+		.map( file => file.slice( file.indexOf( "/" ) + 1 ) );
+	//console.log( 'files', files );
+
+	const folders = [];
+
+	const htm = files.map ( ( path, index )  => {
+
+		const strings = path.split( "/" )
+		const folder = strings[ 0 ];
+
+		let str = "";
+
+		// if ( ! folders.includes( folder ) ) {
+
+		// 	folders.push( folder );
+		// 	str = `<h3>${ folder }</h3>`;
+
+		// }
+
+		const url = "https://github.com/ladybug-tools/honeybee-schema/blob/master/samples/";
+		const urlCdn = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-schema/samples/";
+		urlTop = "https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-09/honeybee-viewer-lt.html#" + urlCdn;
+
+		return `
+		${ str }
+		<div>
+			<a href="${ url }${ path }" title="Source code on GitHub" >
+				<img src=https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg ></a>
+			${ index } <a href="#${ urlCdn }${ path }" >${ strings.pop() }</a>
+			<a href="${ urlTop }${ path }" target="_blank">
+				<img width=16 src=../../images/icon-external-link.svg></a>
+
+		</div>`
+
+	} ).join( "" );
+
+	divNavFilesHoneybee.innerHTML = "<h3>Honeybee</h3>" +  htm;
+}
+
+
+
+function getFilesDragonflySchemaSamples() {
+
+	const urlApiDragonflySchema = "https://api.github.com/repos/ladybug-tools/dragonfly-schema/git/trees/master?recursive=1"
+
+	requestFile( urlApiDragonflySchema, onLoadDragonflySchema );
+
+}
+
+
+
+function onLoadDragonflySchema( response ) {
+
+const json = JSON.parse( response );
+//console.log( "json", json );
+
+let files = json.tree
+	.filter( file => file.type === "blob" )
+	.map( file => file.path )
+	.filter( file => file.includes( "samples/" ) && ! file.includes( "dev" )  )
+	//.filter( file => ! file.includes( "index" ) && ! file.includes( "readme" ) )
+	.map( file => file.slice( file.indexOf( "/" ) + 1 ) );
+//console.log( 'files', files );
+
+const folders = [];
+
+const htm = files.map ( ( path, index )  => {
+
+	const strings = path.split( "/" )
+	const folder = strings[ 0 ];
+
+	let str = "";
+
+	// if ( ! folders.includes( folder ) ) {
+
+	// 	folders.push( folder );
+	// 	str = `<h3>${ folder }</h3>`;
+
+	// }
+
+	const urlSrc = "https://github.com/ladybug-tools/dragonfly-schema/blob/master/samples/";
+	const urlCdn = "https://cdn.jsdelivr.net/gh/ladybug-tools/dragonfly-schema/samples/";
+	const urlTop = "https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-09/honeybee-viewer-lt.html#" + urlCdn;
+
+	return `
+		${ str }
+		<div>
+
+			<a href="${ urlSrc }${ path }" >
+				<img src=https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg ></a>
+			${ index } <a href="#${ urlCdn }${ path }" >${ strings.pop() }</a>
+			<a href="${ urlTop }${ path }" target="_blank">
+				<img width=16 src=../../images/icon-external-link.svg></a>
+
+		</div>`
+
+	} ).join( "" );
+
+	divNavFilesDragonfly.innerHTML = "<h3>Dragonfly</h3>" +  htm;
+
+}
+
+
+
+function openInNewTab() {
+
+
+	const url = "https://www.ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-10/honeybee-viewer-lt.html";
+
+	window.location.href = url + location.hash;
+
+}
+
+
+
+function requestFile( url, callback ) {
+
+	xhr = new XMLHttpRequest();
+	xhr.open( 'GET', url, true );
+	xhr.onerror = ( xhr ) => console.log( 'error:', xhr  );
+	//xhr.onprogress = ( xhr ) => console.log( 'bytes loaded:', xhr.loaded );
+	xhr.onload = ( xhr ) => callback( xhr.target.response );
+	xhr.send( null );
+
+}
+</script>
+</body>
+</html>
