@@ -46,7 +46,7 @@ RAY.onMouseMove = function ( event ) {
 
 		let intersected = intersects[ 0 ];
 
-		console.log( "intersected", intersected );
+		//console.log( "intersected", intersected );
 
 		//if ( intersected.instanceId ) {
 
