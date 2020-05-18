@@ -9,7 +9,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 The Honeybee Viewer core functionality
 
-<iframe src= https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-11/honeybee-viewer-lt.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+<iframe src= https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-16/honeybee-viewer-lt.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _basic-html.html_
 
 ### Full Screen: [Honeybee Viewer LT]( https://ladybug.tools/honeybee-viewer/viewer-lt/ )
@@ -24,6 +24,10 @@ _basic-html.html_
 <details open >
 <summary>To do and wish list </summary>
 
+* 2020-05-17 ~ Theo ~ Continue effort to get shades and other shape geometry into BufferGeometry
+	* Build cookbook example using shapes
+* 2020-05-17 ~ Theo ~ Continue modularizing the code
+
 
 </details>
 
@@ -33,16 +37,6 @@ _basic-html.html_
 
 </details>
 
-<details open >
-<summary> Things you can do using this script</summary>
-
-* Click the three bars( 'hamburger menu icon' ) to slide the menu in and out
-* Click the GitHub Octocat icon to view or edit the source code on GitHub
-* Click on title to reload te page
-* Press Control-U/Command-Option-U to view the source code
-* Press Control-Shift-J/Command-Option-J to see if the JavaScript console reports any errors
-
-</details>
 
 <details open >
 <summary>Links of interest</summary>

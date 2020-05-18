@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+	<meta name=description
+		content="Real-time interactive 3D graphics in your browser using the WebGL and the Three.js JavaScript library">
+	<meta name=keywords content="Three.js,WebGL,JavaScript,GitHub,FOSS,3D,STEM">
+
+	<title>Honeybee Viewer LT</title>
+
+	<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r116/build/three.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r116/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r116/examples/js/utils/BufferGeometryUtils.js"></script>
+
+	<div id="navMenu">
+
+		<details open>
+
+			<summary>show || hide menu</summary>
+
+			<header id="hdrTitle">
+				<h2>
+
+					<a href="https://glitch.com/~honeybee-viewer-lt-2020-05" target="_top"
+						title="Source code on Glitch">
+						<img width="18"
+							src="https://cdn.glitch.com/2250d667-1452-448b-8cd3-e0bdfd5adb3c%2Fglitch-icon.svg">
+					</a>
+
+					<a href="https://github.com/ladybug-tools/honeybee-viewer/tree/master/viewer-lt" target="_top"
+						title="Source code on GitHub">
+						<img
+							src="https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg?v=1589095846856">
+					</a>
+
+					<a href="" title="Click to reload this page">
+						Honeybee Viewer LT
+
+						2020-05-16
+
+					</a>
+					&nbsp;
+					<span class="info">&#x24d8;<span id="divDescription" class="infotooltip">
+
+							Real-time interactive 3D Honeybee and Dragonfly in your browser using the WebGL and the
+							Three.js JavaScript library
+
+						</span></span>
+
+				</h2>
+
+			</header>
+
+		</details>
+
+
+
+	</div>
+
+
+	<footer>
+
+		<button onclick="controls.reset();zoomObjectBoundingSphere(group);" class="ftrButton"
+			title="reset the view">&CirclePlus;</button>
+
+		<button onclick="controls.autoRotate=!controls.autoRotate" title="toggle the rotation"
+			class=ftrButton>&circlearrowright;</button>
+
+		<!-- <button onclick="TXTgroup.visible=! TXTgroup.visible" title="toggle statistics"
+		class=ftrButton>&sdotb;</button>
+		-->
+		<button onclick=setStats(); title="See the rendering statistics" class=ftrButton>fps</button>
+
+	</footer>
+
+
+
+	<script src="pdj-parse-dragonfly-json-2020-05-14.js"></script>
+
+	<script src="phj-parse-honeybee-json-2020-05-17.js"></script>
+
+	<script src="ray-raycaster-2020-05-15.js"></script>
+
+	<script src="script.js"></script>
+
+	<script>
+
+		let size = 1;
+		let line = new THREE.Line();
+		let tellTale;
+
+		init();
+
+		function init() {
+
+			initThreejs();
+
+			animate();
+
+			const target = window.self === window.top ? window : window.parent;
+
+			target.addEventListener("hashchange", onHashChange);
+
+			onHashChange();
+
+			RAY.init();
+
+			addTellTale();
+			scene.add( line );
+
+		}
+
+
+
+		function onHashChange() {
+
+			const url = parent.location.hash.slice(1);
+
+			if ( url) {
+
+				//const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-schema@master/samples/";
+				//const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/dragonfly-schema@master/samples/";
+				requestFile( url, onLoadJson );
+
+			} else {
+
+				getFile();
+
+			}
+
+		}
+
+
+		function getFile( index = 3 ) {
+
+			const path = "https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-viewer@master/sample-files/2020-04-17/";
+
+			const files = [
+				"My_Mother_In_Laws_House.json",
+				"Lab_Complex.json",
+				"Urban_Model_Dragonfly.json",
+				"Urban_Model_Honeybee.json"
+			];
+
+			const fileName = files[index];
+
+			requestFile(path + fileName, onLoadJson);
+
+		}
+
+
+
+		function onLoadJson(response) {
+
+			//divRendererInfo.innerHTML = "";
+			timeStart = performance.now();
+
+			string = response;
+
+			json = JSON.parse(string);
+			console.log("json", json);
+
+			scene.remove(PHJ.group, PDJ.group);
+
+			PHJ.group = new THREE.Group();
+
+			PDJ.group = new THREE.Group();
+
+			scene.add(PHJ.group, PDJ.group);
+
+			PHJ.vertices = [];
+
+			PHJ.geometryShade = new THREE.Geometry();
+
+			PHJ.geometryFaces = new THREE.Geometry();
+
+			if ( ["Model", "Building", "Story", "Room2D", "ContextShade"].includes(json.type)) {
+
+				PDJ.processJson(json);
+
+			}
+
+			PHJ.processJson(json);
+
+
+
+			//console.log( "PHJ.vertices;", PHJ.vertices );
+
+			// geometryLine = new THREE.Geometry();
+			// geometryLine.vertices = PHJ.vertices.flatMap(vertex => vertex);
+			// const materialLine = new THREE.LineBasicMaterial({ color: 0x000000 });
+			// const line = new THREE.Line(geometryLine, materialLine);
+			// PDJ.group.add(line);
+
+			const geometryLine = new THREE.BufferGeometry();
+
+			const positions = PHJ.vertices.flatMap( vertices =>
+
+				vertices.slice( 0, - 1 ).flatMap( ( v0, i ) => {
+
+					const v1 = vertices[ i + 1 ];
+					return [ v0.x, v0.y, v0.z, v1.x, v1.y, v1.z ];
+
+				} )
+
+			);
+
+			geometryLine.setAttribute( "position", new THREE.Float32BufferAttribute( positions, 3 ) );
+
+			const materialLine = new THREE.LineBasicMaterial( { color: 0x000ff } );
+
+			line = new THREE.LineSegments( geometryLine, materialLine );
+
+			PDJ.group.add(line);
+
+
+			const materialShades = new THREE.MeshPhongMaterial({ color: "darkgray", opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false });
+			meshShades = new THREE.Mesh( PHJ.geometryShade, materialShades);
+
+			meshShades.castShadow = true;
+			meshShades.receiveShadow = true;
+
+			meshShades.geometry.computeVertexNormals();
+			meshShades.geometry.computeFaceNormals();
+			meshShades.geometry.computeBoundingBox();
+
+			PHJ.group.add( meshShades );
+
+
+			//const material = new THREE.MeshNormalMaterial( { opacity: 0.7, side: THREE.DoubleSide, transparent: true, wireframe: false } );
+			//const material = new THREE.MeshPhongMaterial( { color: color, opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false } );
+
+			//PHJ.geometryFaces.vertices = PHJ.vertices;
+
+			PHJ.addMesh( PHJ.Wall, "beige" );
+			PHJ.addMesh( PHJ.Floor, "brown" );
+			PHJ.addMesh( PHJ.RoofCeiling, "red" );
+			PHJ.addMesh( PHJ.AirBoundary, "blue" );
+
+			if ( PDJ.group.children.length > 1 ) {
+
+				zoomObjectBoundingSphere(PDJ.group);
+
+			} else {
+
+				zoomObjectBoundingSphere(PHJ.group);
+
+			}
+
+			RAY.intersectObjects = PHJ.group.children;
+		}
+
+
+
+		PHJ.addMesh = function ( geometry, color = "beige" ) {
+
+			const material = new THREE.MeshPhongMaterial({ color: color, opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false });
+
+			const mesh = new THREE.Mesh( geometry, material);
+
+			mesh.castShadow = true;
+			mesh.receiveShadow = true;
+
+			mesh.geometry.computeVertexNormals();
+			mesh.geometry.computeFaceNormals();
+			// mesh.geometry.computeBoundingBox();
+
+			//mesh.updateMatrixWorld();
+
+			PHJ.group.add(mesh);
+
+		}
+
+
+
+		RAY.getHtm = function ( intersected ) {
+
+			//scene.updateMatrixWorld();
+
+			console.log( "intersected", intersected );
+
+			faceA = intersected.face.a;
+			faceB = intersected.face.b;
+			faceC = intersected.face.c;
+
+			objGeo = intersected.object.geometry;
+			let vertexA = objGeo.vertices[ faceA ];
+
+			tellTale.position.copy( vertexA );
+
+			const vertices = [ vertexA, objGeo.vertices[ faceB ], objGeo.vertices[ faceC ], vertexA ];
+			addLine( vertices );
+
+			let thisRoom;
+
+			for ( let room of json.rooms ) {
+
+				for ( let face of room.faces ) {
+
+					for ( let point of face.geometry.boundary ) {
+
+						const checkNearest =
+
+						Math.abs( vertexA.x - point[ 0 ] ) < 0.00001
+						&& Math.abs( vertexA.y - point[ 1 ] ) < 0.00001
+						&& Math.abs( vertexA.z - point[ 2 ] ) < 0.00001;
+
+						thisRoom = checkNearest ? room : thisRoom;
+
+					}
+			 	}
+			}
+
+			//console.log( "thisRoom", thisRoom );
+
+			// faceIndex: ${ intersected.faceIndex }<br>
+			if ( thisRoom ) {
+
+				htm = `
+					name: ${ thisRoom.display_name }<br>
+					type: ${ thisRoom.type }<br>
+					construction set: ${ thisRoom.properties.energy.construction_set }<br>
+					hvac: ${ thisRoom.properties.energy.hvac }<br>
+					program type: ${ thisRoom.properties.energy.program_type }<br>
+				`;
+				return htm;
+
+			} else {
+
+				return "";
+
+			}
+
+		};
+
+
+
+		function addLine( vertices ) {
+
+			scene.remove( line );
+			const geometry = new THREE.Geometry();
+			geometry.vertices = vertices;
+			const material = new THREE.LineBasicMaterial( { color: 0x000000 } );
+			line = new THREE.Line( geometry, material );
+			scene.add( line );
+
+		}
+
+
+
+		function addTellTale( siz = 0.5 / size) {
+
+			const geometry = new THREE.BoxBufferGeometry( siz, siz, siz );
+			const material = new THREE.MeshNormalMaterial();
+			tellTale = new THREE.Mesh( geometry, material );
+			scene.add( tellTale );
+
+		}
+
+	</script>
+</body>
+
+</html>
