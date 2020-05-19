@@ -185,6 +185,10 @@
 
 				PDJ.processJson(json);
 
+			} else {
+
+				alert( "no dragonfly 3D data");  
+
 			}
 
 			PHJ.processJson(json);
@@ -254,7 +258,10 @@
 
 			}
 
+			console.log( "phj", PHJ.group.children );
 			RAY.intersectObjects = PHJ.group.children;
+
+
 		}
 
 

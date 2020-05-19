@@ -18,15 +18,15 @@
 :root { --mnu-width: 25rem; --screen-width: calc( 100vw ); --headerHeight: 6rem; }
 
 details { margin: 1rem 0 1rem 0; }
+
 main { border: 0px solid red; height: 100vh; left: var( --mnu-width ); margin: 0;
 	overflow: auto; padding: 0 1rem; position: absolute; width: calc( 100% - var( --mnu-width ) );  }
 
 summary {font-size: 120%; font-weight: bold; }
-#navMenu:hover {
-	overflow: auto;
-}
 
-#navMenu { width: var( --mnu-width ); }
+#navMenu:hover { overflow: auto; }
+
+#navMenu { 	background-color: #eee; margin-left: 0; padding-left: 1rem;width: var( --mnu-width ); }
 
 
 </style>
@@ -96,23 +96,11 @@ summary {font-size: 120%; font-weight: bold; }
 
 	</p>
 
-	<!-- <p>
-		<button id=but onclick=setIt(); >set it</button>
-	</p>
-	<p>
-		<label><input type=checkbox > checkbox</label>
-	</p>
-	<p>
-		<output id=out >50</output><input type=range id="rng" oninput=out.value=this.value >
-	</p> -->
-
 	<div id=divNavFilesHoneybee ></div>
 
 	<div id=divNavFilesDragonfly ></div>
 
 	<div>
-
-		<br>
 		<hr>
 		<p>
 			<center title="go to top of menu" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; >
@@ -317,6 +305,7 @@ function requestFile( url, callback ) {
 	xhr.send( null );
 
 }
+
 </script>
 </body>
 </html>

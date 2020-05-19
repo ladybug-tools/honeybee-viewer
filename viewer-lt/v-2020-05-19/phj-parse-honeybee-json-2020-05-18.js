@@ -62,6 +62,12 @@ PHJ.processJson = function ( json ) {
 
 	//PHJ.geometryShade = THREE.BufferGeometryUtils.mergeBufferGeometries( geometries );
 
+	console.log( rooms.length, PHJ.vertices.length )
+	if ( rooms.length === 0 && PHJ.vertices.length === 0 ) {
+
+		alert( "No Honeybee 3D data" );
+	}
+
 };
 
 
@@ -129,7 +135,7 @@ PHJ.parseShades = function ( shades ) {
 			const shapeGeometry = new THREE.ShapeGeometry( shape );
 			shapeGeometry.vertices = vertices;
 
-			console.log( "shapeGeometry", shapeGeometry );
+			//console.log( "shapeGeometry", shapeGeometry );
 
 			//const geo = new THREE.BufferGeometry();
 			//const shapeBufferGeometry = geo.fromGeometry( shapeGeometry );
