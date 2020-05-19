@@ -50,7 +50,7 @@ summary {font-size: 120%; font-weight: bold; }
 			<a href="" title="Click to reload this page" >
 				Honeybee Viewer
 
-				2020-05-18
+				2020-05-19
 
 			</a>
 			&nbsp;
@@ -91,7 +91,7 @@ summary {font-size: 120%; font-weight: bold; }
 			Urban_Model_Honeybee
 		</button>
 
-		<a href="https://www.ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-18/honeybee-viewer-lt.html#https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-viewer@master/sample-files/2020-04-17/Urban_Model_Honeybee.json" target="_blank" ><img height=12 width=16 src=../../images/icon-external-link.svg></a>
+		<a href="https://www.ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-19/honeybee-viewer-lt.html#https://cdn.jsdelivr.net/gh/ladybug-tools/honeybee-viewer@master/sample-files/2020-04-17/Urban_Model_Honeybee.json" target="_blank" ><img height=12 width=16 src=../../images/icon-external-link.svg></a>
 
 
 	</p>
@@ -214,6 +214,7 @@ function onLoadHoneybeeSchema( response ) {
 		<summary>Honeyee Schema Sample Files</summary>
 		${ htm }
 	</details>`;
+
 }
 
 
@@ -230,48 +231,40 @@ function getFilesDragonflySchemaSamples() {
 
 function onLoadDragonflySchema( response ) {
 
-const json = JSON.parse( response );
-//console.log( "json", json );
+	const json = JSON.parse( response );
+	//console.log( "json", json );
 
-let files = json.tree
-	.filter( file => file.type === "blob" )
-	.map( file => file.path )
-	.filter( file => file.includes( "samples/" ) && ! file.includes( "dev" )  )
-	//.filter( file => ! file.includes( "index" ) && ! file.includes( "readme" ) )
-	.map( file => file.slice( file.indexOf( "/" ) + 1 ) );
-//console.log( 'files', files );
+	let files = json.tree
+		.filter( file => file.type === "blob" )
+		.map( file => file.path )
+		.filter( file => file.includes( "samples/" ) && ! file.includes( "dev" )  )
+		//.filter( file => ! file.includes( "index" ) && ! file.includes( "readme" ) )
+		.map( file => file.slice( file.indexOf( "/" ) + 1 ) );
+	//console.log( 'files', files );
 
-const folders = [];
+	const folders = [];
 
-const htm = files.map ( ( path, index )  => {
+	const htm = files.map ( ( path, index )  => {
 
-	const strings = path.split( "/" )
-	const folder = strings[ 0 ];
+		const strings = path.split( "/" )
+		const folder = strings[ 0 ];
 
-	let str = "";
+		let str = "";
+		const urlSrc = "https://github.com/ladybug-tools/dragonfly-schema/blob/master/samples/";
+		const urlCdn = "https://cdn.jsdelivr.net/gh/ladybug-tools/dragonfly-schema/samples/";
+		const urlTop = "https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-19/honeybee-viewer-lt.html#" + urlCdn;
 
-	// if ( ! folders.includes( folder ) ) {
+		return `
+			${ str }
+			<div>
 
-	// 	folders.push( folder );
-	// 	str = `<h3>${ folder }</h3>`;
+				<a href="${ urlSrc }${ path }" >
+					<img src=https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg ></a>
+				${ index } <a href="#${ urlCdn }${ path }" >${ strings.pop() }</a>
+				<a href="${ urlTop }${ path }" target="_blank">
+					<img width=16 src=../../images/icon-external-link.svg></a>
 
-	// }
-
-	const urlSrc = "https://github.com/ladybug-tools/dragonfly-schema/blob/master/samples/";
-	const urlCdn = "https://cdn.jsdelivr.net/gh/ladybug-tools/dragonfly-schema/samples/";
-	const urlTop = "https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-09/honeybee-viewer-lt.html#" + urlCdn;
-
-	return `
-		${ str }
-		<div>
-
-			<a href="${ urlSrc }${ path }" >
-				<img src=https://cdn.glitch.com/7af242e2-0cf2-4179-8c41-b2f2cb982c5a%2Fmark-github.svg ></a>
-			${ index } <a href="#${ urlCdn }${ path }" >${ strings.pop() }</a>
-			<a href="${ urlTop }${ path }" target="_blank">
-				<img width=16 src=../../images/icon-external-link.svg></a>
-
-		</div>`
+			</div>`
 
 	} ).join( "" );
 

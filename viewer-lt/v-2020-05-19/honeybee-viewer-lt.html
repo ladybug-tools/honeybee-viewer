@@ -58,6 +58,8 @@
 
 			</header>
 
+			<div id=divLog ></div>
+
 		</details>
 
 
@@ -82,13 +84,13 @@
 
 
 
-	<script src="pdj-parse-dragonfly-json-2020-05-14.js"></script>
+	<script src="./pdj-parse-dragonfly-json-2020-05-14.js"></script>
 
-	<script src="phj-parse-honeybee-json-2020-05-18.js"></script>
+	<script src="./phj-parse-honeybee-json-2020-05-18.js"></script>
 
-	<script src="ray-raycaster-2020-05-15.js"></script>
+	<script src="./ray-raycaster-2020-05-15.js"></script>
 
-	<script src="script.js"></script>
+	<script src="./script.js"></script>
 
 	<script>
 
@@ -173,7 +175,13 @@
 
 			PDJ.group = new THREE.Group();
 
-			scene.add(PHJ.group, PDJ.group);
+			scene.add( PHJ.group, PDJ.group );
+
+			grp2 = new THREE.Group();
+			grp2.position.x = 500;
+			grp3 = new THREE.Group();
+			grp3.position.y = -500;
+			scene.add( grp2, grp3 );
 
 			PHJ.vertices = [];
 
@@ -195,13 +203,14 @@
 
 
 
-			//console.log( "PHJ.vertices;", PHJ.vertices );
-
+			
 			// geometryLine = new THREE.Geometry();
 			// geometryLine.vertices = PHJ.vertices.flatMap(vertex => vertex);
 			// const materialLine = new THREE.LineBasicMaterial({ color: 0x000000 });
 			// const line = new THREE.Line(geometryLine, materialLine);
 			// PDJ.group.add(line);
+			
+			//console.log( "PHJ.vertices;", PHJ.vertices );
 
 			const geometryLine = new THREE.BufferGeometry();
 
@@ -220,13 +229,17 @@
 
 			const materialLine = new THREE.LineBasicMaterial( { color: 0x000ff } );
 
-			line = new THREE.LineSegments( geometryLine, materialLine );
+			const line = new THREE.LineSegments( geometryLine, materialLine );
 
 			PDJ.group.add(line);
+			grp2.add( line.clone() );
+			grp3.add( line.clone() );
+
+
 
 
 			const materialShades = new THREE.MeshPhongMaterial({ color: "darkgray", opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false });
-			meshShades = new THREE.Mesh( PHJ.geometryShade, materialShades);
+			meshShades = new THREE.Mesh( PHJ.bufferGeometry, materialShades);
 
 			meshShades.castShadow = true;
 			meshShades.receiveShadow = true;
@@ -236,6 +249,10 @@
 			meshShades.geometry.computeBoundingBox();
 
 			PHJ.group.add( meshShades );
+			grp2.add( meshShades.clone() );
+			grp3.add( meshShades.clone() );
+
+
 
 
 			//const material = new THREE.MeshNormalMaterial( { opacity: 0.7, side: THREE.DoubleSide, transparent: true, wireframe: false } );
@@ -258,11 +275,12 @@
 
 			}
 
-			console.log( "phj", PHJ.group.children );
+			//console.log( "phj", PHJ.group.children );
 			RAY.intersectObjects = PHJ.group.children;
 
+			divLog.innerHTML = `time to load: ${ ( ( performance.now() - timeStart ) / 1000).toLocaleString() } seconds`;
 
-		}
+		};
 
 
 
@@ -270,7 +288,8 @@
 
 			const material = new THREE.MeshPhongMaterial({ color: color, opacity: 0.9, side: THREE.DoubleSide, transparent: true, wireframe: false });
 
-			const mesh = new THREE.Mesh( geometry, material);
+			bufferGeometry = new THREE.BufferGeometry().fromGeometry( geometry);
+			const mesh = new THREE.Mesh( bufferGeometry, material);
 
 			mesh.castShadow = true;
 			mesh.receiveShadow = true;
@@ -282,8 +301,10 @@
 			//mesh.updateMatrixWorld();
 
 			PHJ.group.add(mesh);
+			grp2.add( mesh.clone() );
+			grp3.add( mesh.clone() );
 
-		}
+		};
 
 
 
@@ -297,7 +318,8 @@
 			faceB = intersected.face.b;
 			faceC = intersected.face.c;
 
-			objGeo = intersected.object.geometry;
+			//objGeo = intersected.object.geometry;
+			objGeo = new THREE.Geometry().fromBufferGeometry( intersected.object.geometry );
 			let vertexA = objGeo.vertices[ faceA ];
 
 			tellTale.position.copy( vertexA );
@@ -345,11 +367,13 @@
 
 			}
 
+
+
 		};
 
 
 
-		function addLine( vertices ) {
+		function addLine( vertices ) { // ray-caster only
 
 			scene.remove( line );
 			const geometry = new THREE.Geometry();
@@ -362,7 +386,7 @@
 
 
 
-		function addTellTale( siz = 0.5 / size) {
+		function addTellTale( siz = 0.5 / size) { 
 
 			const geometry = new THREE.BoxBufferGeometry( siz, siz, siz );
 			const material = new THREE.MeshNormalMaterial();
