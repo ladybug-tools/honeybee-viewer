@@ -9,7 +9,7 @@ value='You are now in a GitHub web page view - Click this button to view this re
 
 The Honeybee Viewer core functionality
 
-<iframe src= https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-16/honeybee-viewer-lt.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
+<iframe src= https://ladybug.tools/honeybee-viewer/viewer-lt/v-2020-05-19/honeybee-viewer-lt.html width=100% height=500px >Iframes are not viewable in GitHub source code view</iframe>
 _basic-html.html_
 
 ### Full Screen: [Honeybee Viewer LT]( https://ladybug.tools/honeybee-viewer/viewer-lt/ )
@@ -24,8 +24,7 @@ _basic-html.html_
 <details open >
 <summary>To do and wish list </summary>
 
-* 2020-05-17 ~ Theo ~ Continue effort to get shades and other shape geometry into BufferGeometry
-	* Build cookbook example using shapes
+
 * 2020-05-17 ~ Theo ~ Continue modularizing the code
 
 
@@ -46,6 +45,15 @@ _basic-html.html_
 
 <details open >
 <summary>Change log </summary>
+
+### 2020-05-19 ~ Theo
+
+* keeps getting faster
+
+Done
+
+* 2020-05-17 ~ Theo ~ Continue effort to get shades and other shape geometry into BufferGeometry
+	* Build cookbook example using shapes
 
 ### 2020-05-10
 
