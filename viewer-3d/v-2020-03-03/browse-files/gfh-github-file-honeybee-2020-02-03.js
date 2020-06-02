@@ -6,7 +6,7 @@
 
 const GFH = {};
 
-GFH.defaultSelectedIndex = 26;
+GFH.defaultSelectedIndex = 31;
 
 
 GFH.url = "https://api.github.com/repos/ladybug-tools/honeybee-schema/git/trees/master?recursive=1";

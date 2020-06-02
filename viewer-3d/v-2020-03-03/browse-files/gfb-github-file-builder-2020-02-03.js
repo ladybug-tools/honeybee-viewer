@@ -82,7 +82,7 @@ GFB.getOptions = function () {
 
 
 
-GFB.getUrl = function ( index = 24 ) {
+GFB.getUrl = function ( index = 31 ) {
 
 	const item = GFB.filesData[ index ];
 
